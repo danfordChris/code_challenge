@@ -1,3 +1,4 @@
+import 'package:code_challenge/features/dashboard/controller/boards_controller.dart';
 import 'package:code_challenge/models/task_model.dart';
 import 'package:code_challenge/repositories/task_repository.dart';
 import 'package:code_challenge/services/localization_service.dart';
@@ -42,6 +43,7 @@ class TaskController extends Notifier<TaskState> {
       await TaskRepository.instance.save(task);
       state = state.copyWith(isLoading: false);
       loadTasks(task);
+      ref.read(boardsProvider.notifier).loadBoards();
     } catch (e) {
       state = state.copyWith(isLoading: false, error: '${Strings.instance.failedToSaveData(Strings.instance.task)}: $e');
     }
@@ -53,6 +55,7 @@ class TaskController extends Notifier<TaskState> {
       await TaskRepository.instance.delete(task);
       state = state.copyWith(isLoading: false);
       loadTasks(task);
+      ref.read(boardsProvider.notifier).loadBoards();
     } catch (e) {
       state = state.copyWith(isLoading: false, error: '${Strings.instance.failedToDeleteData(Strings.instance.task)}: $e');
     }
@@ -75,6 +78,7 @@ class TaskController extends Notifier<TaskState> {
       await TaskRepository.instance.update(task);
       state = state.copyWith(isLoading: false);
       loadTasks(task);
+      ref.read(boardsProvider.notifier).loadBoards();
     } catch (e) {
       state = state.copyWith(isLoading: false, error: '${Strings.instance.failedToUpdateData(Strings.instance.task)}: $e');
     }

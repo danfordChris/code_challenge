@@ -7,43 +7,73 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class BoardsControllerState {
   final List<BoardsModel> boards;
+  final List<BoardsModel> filteredBoards;
   final bool isLoading;
   final String? error;
   final int? activeTasksCount;
   final int? pendingTasksCount;
   final int? completedTasksCount;
+  final String searchQuery;
+  final TaskStatus? filterStatus;
+  final List<SearchSuggestion> searchSuggestions;
 
   const BoardsControllerState({
     required this.boards,
+    required this.filteredBoards,
     this.isLoading = false,
     this.error,
     this.activeTasksCount,
     this.pendingTasksCount,
     this.completedTasksCount,
+    this.searchQuery = '',
+    this.filterStatus,
+    this.searchSuggestions = const [],
   });
 
   // Initial state
   factory BoardsControllerState.initial() {
-    return const BoardsControllerState(boards: [], isLoading: false);
+    return const BoardsControllerState(boards: [], filteredBoards: [], isLoading: false, searchQuery: '', searchSuggestions: []);
   }
 
   BoardsControllerState copyWith({
     List<BoardsModel>? boards,
+    List<BoardsModel>? filteredBoards,
     bool? isLoading,
     String? error,
     int? activeTasksCount,
     int? pendingTasksCount,
     int? completedTasksCount,
+    String? searchQuery,
+    TaskStatus? filterStatus,
+    bool clearFilterStatus = false,
+    List<SearchSuggestion>? searchSuggestions,
   }) {
     return BoardsControllerState(
       boards: boards ?? this.boards,
+      filteredBoards: filteredBoards ?? this.filteredBoards,
       isLoading: isLoading ?? this.isLoading,
       error: error,
       activeTasksCount: activeTasksCount ?? this.activeTasksCount,
       pendingTasksCount: pendingTasksCount ?? this.pendingTasksCount,
       completedTasksCount: completedTasksCount ?? this.completedTasksCount,
+      searchQuery: searchQuery ?? this.searchQuery,
+      filterStatus: clearFilterStatus ? null : (filterStatus ?? this.filterStatus),
+      searchSuggestions: searchSuggestions ?? this.searchSuggestions,
     );
   }
+}
+
+enum SuggestionType { board, task }
+
+class SearchSuggestion {
+  final String id;
+  final String title;
+  final String? subtitle;
+  final SuggestionType type;
+  final String boardId;
+  final String boardName;
+
+  SearchSuggestion({required this.id, required this.title, this.subtitle, required this.type, required this.boardId, required this.boardName});
 }
 
 class BoardsController extends Notifier<BoardsControllerState> {
@@ -100,10 +130,91 @@ class BoardsController extends Notifier<BoardsControllerState> {
         board.completedTaskCount = completedTask.length;
       }
       state = state.copyWith(boards: boards, isLoading: false);
+      _applyFilterAndSearch();
       loadTaskCount();
     } catch (e) {
       state = state.copyWith(isLoading: false, error: '${Strings.instance.failedToLoadData(Strings.instance.board)} $e');
     }
+  }
+
+  Future<void> _applyFilterAndSearch() async {
+    List<BoardsModel> filtered = [];
+    List<SearchSuggestion> suggestions = [];
+
+    for (var board in state.boards) {
+      bool matchesSearch = false;
+      bool matchesFilter = true;
+
+      // Search by board name
+      if (board.boardName?.toLowerCase().contains(state.searchQuery.toLowerCase()) ?? false) {
+        matchesSearch = true;
+        if (state.searchQuery.isNotEmpty) {
+          suggestions.add(
+            SearchSuggestion(
+              id: board.id ?? '',
+              title: board.boardName ?? '',
+              type: SuggestionType.board,
+              boardId: board.id ?? '',
+              boardName: board.boardName ?? '',
+            ),
+          );
+        }
+      }
+
+      // Search by task name in this board
+      final tasks = await TaskRepository.instance.taskForBoard(board.id ?? '');
+      if (state.searchQuery.isNotEmpty) {
+        for (var task in tasks) {
+          if (task.title?.toLowerCase().contains(state.searchQuery.toLowerCase()) ?? false) {
+            matchesSearch = true;
+            suggestions.add(
+              SearchSuggestion(
+                id: task.id ?? '',
+                title: task.title ?? '',
+                subtitle: 'In ${board.boardName}',
+                type: SuggestionType.task,
+                boardId: board.id ?? '',
+                boardName: board.boardName ?? '',
+              ),
+            );
+          }
+        }
+      }
+
+      // Filter by status
+      if (state.filterStatus != null) {
+        if (state.filterStatus == TaskStatus.done) {
+          if (board.completedTaskCount == 0 && board.taskCount != 0) matchesFilter = false;
+        } else if (state.filterStatus == TaskStatus.todo) {
+          if (tasks.every((t) => t.status == TaskStatus.done.value)) matchesFilter = false;
+        }
+        // More complex filtering could be added here if needed.
+        // For now, let's say if filterStatus is set, we check if board has any tasks with that status.
+        final statusTasks = tasks.where((t) => t.status == state.filterStatus!.value).toList();
+        if (statusTasks.isEmpty && tasks.isNotEmpty) matchesFilter = false;
+        if (tasks.isEmpty && state.filterStatus != null) matchesFilter = false;
+      }
+
+      if (matchesSearch && matchesFilter) {
+        filtered.add(board);
+      }
+    }
+
+    state = state.copyWith(filteredBoards: filtered, searchSuggestions: suggestions);
+  }
+
+  void updateSearchQuery(String query) {
+    state = state.copyWith(searchQuery: query);
+    _applyFilterAndSearch();
+  }
+
+  void updateFilterStatus(TaskStatus? status) {
+    if (status == null) {
+      state = state.copyWith(clearFilterStatus: true);
+    } else {
+      state = state.copyWith(filterStatus: status);
+    }
+    _applyFilterAndSearch();
   }
 
   Future<void> loadTaskCount() async {
@@ -121,7 +232,7 @@ class BoardsController extends Notifier<BoardsControllerState> {
     } catch (e) {
       state = state.copyWith(isLoading: false, error: 'Failed to load task counts: $e');
     }
-  } 
+  }
 
   // Future<void> clearBoards() async {
   //   try {

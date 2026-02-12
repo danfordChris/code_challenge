@@ -12,8 +12,9 @@ import 'package:hugeicons/hugeicons.dart';
 class TaskBoardScreen extends ConsumerStatefulWidget {
   final String boardId;
   final String boardName;
+  final String? highlightTaskId;
 
-  const TaskBoardScreen({super.key, required this.boardId, required this.boardName});
+  const TaskBoardScreen({super.key, required this.boardId, required this.boardName, this.highlightTaskId});
 
   @override
   ConsumerState<TaskBoardScreen> createState() => _TaskBoardScreenState();
@@ -75,6 +76,7 @@ class _TaskBoardScreenState extends ConsumerState<TaskBoardScreen> {
                     color: Colors.blue,
                     width: context.width * 0.6,
                     boardId: widget.boardId,
+                    highlightTaskId: widget.highlightTaskId,
                   ),
                   SizedBox(width: 16),
                   TaskColumn(
@@ -83,6 +85,7 @@ class _TaskBoardScreenState extends ConsumerState<TaskBoardScreen> {
                     color: Colors.orange,
                     width: context.width * 0.6,
                     boardId: widget.boardId,
+                    highlightTaskId: widget.highlightTaskId,
                   ),
                   SizedBox(width: 16),
                   TaskColumn(
@@ -91,6 +94,7 @@ class _TaskBoardScreenState extends ConsumerState<TaskBoardScreen> {
                     color: Colors.green,
                     width: context.width * 0.6,
                     boardId: widget.boardId,
+                    highlightTaskId: widget.highlightTaskId,
                   ),
                   SizedBox(width: 16),
                 ],

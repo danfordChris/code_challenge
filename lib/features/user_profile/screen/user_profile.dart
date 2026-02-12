@@ -95,6 +95,69 @@ class _UserProfileScreenState extends ConsumerState<UserProfileScreen> {
 
           const SizedBox(height: 24),
 
+          // Data Management Section
+          SectionHeader(title: Strings.instance.dataManagement, icon: HugeIcons.strokeRoundedDatabase),
+          const SizedBox(height: 16),
+          SettingsCard(
+            children: [
+              ListTile(
+                leading: const HugeIcon(icon: HugeIcons.strokeRoundedDatabaseImport, color: Colors.blue),
+                title: Text(Strings.instance.populateDatabase),
+                onTap: () async {
+                  final confirm = await showDialog<bool>(
+                    context: context,
+                    builder: (context) => AlertDialog(
+                      title: Text(Strings.instance.populateDatabase),
+                      content: Text(Strings.instance.populateDatabaseMessage),
+                      actions: [
+                        TextButton(onPressed: () => Navigator.pop(context, false), child: Text(Strings.instance.cancel)),
+                        TextButton(onPressed: () => Navigator.pop(context, true), child: Text(Strings.instance.populateDatabase)),
+                      ],
+                    ),
+                  );
+
+                  if (confirm == true) {
+                    await ref.read(settingsProvider.notifier).populateDatabase();
+                    if (mounted) {
+                      ScaffoldMessenger.of(
+                        context,
+                      ).showSnackBar(SnackBar(content: Text(Strings.instance.databasePopulated), behavior: SnackBarBehavior.floating));
+                    }
+                  }
+                },
+              ),
+              const Divider(height: 1),
+              ListTile(
+                leading: const HugeIcon(icon: HugeIcons.strokeRoundedDatabaseSync, color: Colors.red),
+                title: Text(Strings.instance.clearDatabase),
+                onTap: () async {
+                  final confirm = await showDialog<bool>(
+                    context: context,
+                    builder: (context) => AlertDialog(
+                      title: Text(Strings.instance.clearDatabase),
+                      content: Text(Strings.instance.clearDatabaseMessage),
+                      actions: [
+                        TextButton(onPressed: () => Navigator.pop(context, false), child: Text(Strings.instance.cancel)),
+                        TextButton(onPressed: () => Navigator.pop(context, true), child: Text(Strings.instance.clearDatabase)),
+                      ],
+                    ),
+                  );
+
+                  if (confirm == true) {
+                    await ref.read(settingsProvider.notifier).clearDatabase();
+                    if (mounted) {
+                      ScaffoldMessenger.of(
+                        context,
+                      ).showSnackBar(SnackBar(content: Text(Strings.instance.databaseCleared), behavior: SnackBarBehavior.floating));
+                    }
+                  }
+                },
+              ),
+            ],
+          ),
+
+          const SizedBox(height: 24),
+
           // App Info
           const _AppInfo(),
         ],

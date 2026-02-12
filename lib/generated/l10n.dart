@@ -453,6 +453,186 @@ class S {
   String get systemMode {
     return Intl.message('System Mode', name: 'systemMode', desc: '', args: []);
   }
+
+  /// `Populate Database`
+  String get populateDatabase {
+    return Intl.message(
+      'Populate Database',
+      name: 'populateDatabase',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Clear Database`
+  String get clearDatabase {
+    return Intl.message(
+      'Clear Database',
+      name: 'clearDatabase',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `This will add sample data to your database. Are you sure?`
+  String get populateDatabaseMessage {
+    return Intl.message(
+      'This will add sample data to your database. Are you sure?',
+      name: 'populateDatabaseMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `This will delete all boards and tasks. This action cannot be undone. Are you sure?`
+  String get clearDatabaseMessage {
+    return Intl.message(
+      'This will delete all boards and tasks. This action cannot be undone. Are you sure?',
+      name: 'clearDatabaseMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Database populated successfully`
+  String get databasePopulated {
+    return Intl.message(
+      'Database populated successfully',
+      name: 'databasePopulated',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Database cleared successfully`
+  String get databaseCleared {
+    return Intl.message(
+      'Database cleared successfully',
+      name: 'databaseCleared',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Search boards or tasks...`
+  String get searchHint {
+    return Intl.message(
+      'Search boards or tasks...',
+      name: 'searchHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Results`
+  String get results {
+    return Intl.message('Results', name: 'results', desc: '', args: []);
+  }
+
+  /// `Clear Filter`
+  String get clearFilter {
+    return Intl.message(
+      'Clear Filter',
+      name: 'clearFilter',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No results found`
+  String get noResultsFound {
+    return Intl.message(
+      'No results found',
+      name: 'noResultsFound',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Filter by Task Status`
+  String get filterByStatus {
+    return Intl.message(
+      'Filter by Task Status',
+      name: 'filterByStatus',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `All`
+  String get all {
+    return Intl.message('All', name: 'all', desc: '', args: []);
+  }
+
+  /// `Data Management`
+  String get dataManagement {
+    return Intl.message(
+      'Data Management',
+      name: 'dataManagement',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Failed to clear database`
+  String get failedToClearDatabase {
+    return Intl.message(
+      'Failed to clear database',
+      name: 'failedToClearDatabase',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Failed to reset settings`
+  String get failedToResetSettings {
+    return Intl.message(
+      'Failed to reset settings',
+      name: 'failedToResetSettings',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Failed to load settings`
+  String get failedToLoadSettings {
+    return Intl.message(
+      'Failed to load settings',
+      name: 'failedToLoadSettings',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Failed to change language`
+  String get failedToChangeLanguage {
+    return Intl.message(
+      'Failed to change language',
+      name: 'failedToChangeLanguage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Failed to change theme`
+  String get failedToChangeTheme {
+    return Intl.message(
+      'Failed to change theme',
+      name: 'failedToChangeTheme',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Failed to populate database`
+  String get failedToPopulateDatabase {
+    return Intl.message(
+      'Failed to populate database',
+      name: 'failedToPopulateDatabase',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

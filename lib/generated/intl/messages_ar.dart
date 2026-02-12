@@ -36,6 +36,7 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
     "active": MessageLookupByLibrary.simpleMessage("نشط"),
     "addTask": MessageLookupByLibrary.simpleMessage("إضافة مهمة"),
+    "all": MessageLookupByLibrary.simpleMessage("الكل"),
     "appearance": MessageLookupByLibrary.simpleMessage("المظهر"),
     "board": MessageLookupByLibrary.simpleMessage("لوحة"),
     "boardName": MessageLookupByLibrary.simpleMessage("اسم اللوحة *"),
@@ -44,12 +45,24 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "cancel": MessageLookupByLibrary.simpleMessage("إلغاء"),
     "changeLanguageMessage": m0,
+    "clearDatabase": MessageLookupByLibrary.simpleMessage("مسح قاعدة البيانات"),
+    "clearDatabaseMessage": MessageLookupByLibrary.simpleMessage(
+      "سيؤدي هذا إلى حذف جميع اللوحات والمهام. لا يمكن التراجع عن هذا الإجراء. هل أنت متأكد؟",
+    ),
+    "clearFilter": MessageLookupByLibrary.simpleMessage("مسح التصفية"),
     "completed": MessageLookupByLibrary.simpleMessage("مكتملة"),
     "createBoard": MessageLookupByLibrary.simpleMessage("إنشاء لوحة"),
     "createBoardMessage": MessageLookupByLibrary.simpleMessage(
       "أنشئ لوحتك الأولى للبدء",
     ),
     "darkMode": MessageLookupByLibrary.simpleMessage("الوضع الداكن"),
+    "dataManagement": MessageLookupByLibrary.simpleMessage("إدارة البيانات"),
+    "databaseCleared": MessageLookupByLibrary.simpleMessage(
+      "تم مسح قاعدة البيانات بنجاح",
+    ),
+    "databasePopulated": MessageLookupByLibrary.simpleMessage(
+      "تم تعبئة قاعدة البيانات بنجاح",
+    ),
     "dayAgo": MessageLookupByLibrary.simpleMessage("ي"),
     "delete": MessageLookupByLibrary.simpleMessage("حذف"),
     "deleteTask": MessageLookupByLibrary.simpleMessage("حذف المهمة"),
@@ -66,10 +79,31 @@ class MessageLookup extends MessageLookupByLibrary {
     "edit": MessageLookupByLibrary.simpleMessage("تعديل"),
     "editBoard": MessageLookupByLibrary.simpleMessage("تعديل اللوحة"),
     "editTask": MessageLookupByLibrary.simpleMessage("تعديل المهمة"),
+    "failedToChangeLanguage": MessageLookupByLibrary.simpleMessage(
+      "فشل تغيير اللغة",
+    ),
+    "failedToChangeTheme": MessageLookupByLibrary.simpleMessage(
+      "فشل تغيير السمة",
+    ),
+    "failedToClearDatabase": MessageLookupByLibrary.simpleMessage(
+      "فشل مسح قاعدة البيانات",
+    ),
     "failedToDeleteData": m1,
     "failedToLoadData": m2,
+    "failedToLoadSettings": MessageLookupByLibrary.simpleMessage(
+      "فشل تحميل الإعدادات",
+    ),
+    "failedToPopulateDatabase": MessageLookupByLibrary.simpleMessage(
+      "فشل تعبئة قاعدة البيانات",
+    ),
+    "failedToResetSettings": MessageLookupByLibrary.simpleMessage(
+      "فشل إعادة ضبط الإعدادات",
+    ),
     "failedToSaveData": m3,
     "failedToUpdateData": m4,
+    "filterByStatus": MessageLookupByLibrary.simpleMessage(
+      "تصفية حسب حالة المهمة",
+    ),
     "high": MessageLookupByLibrary.simpleMessage("عالية"),
     "hourAgo": MessageLookupByLibrary.simpleMessage("س"),
     "inProgress": MessageLookupByLibrary.simpleMessage("قيد التنفيذ"),
@@ -80,6 +114,15 @@ class MessageLookup extends MessageLookupByLibrary {
     "medium": MessageLookupByLibrary.simpleMessage("متوسطة"),
     "minuteAgo": MessageLookupByLibrary.simpleMessage("د"),
     "noBoardsYet": MessageLookupByLibrary.simpleMessage("لا توجد لوحات بعد"),
+    "noResultsFound": MessageLookupByLibrary.simpleMessage(
+      "لم يتم العثور على نتائج",
+    ),
+    "populateDatabase": MessageLookupByLibrary.simpleMessage(
+      "تعبئة قاعدة البيانات",
+    ),
+    "populateDatabaseMessage": MessageLookupByLibrary.simpleMessage(
+      "سيؤدي هذا إلى إضافة بيانات نموذجية إلى قاعدة البيانات الخاصة بك. هل أنت متأكد؟",
+    ),
     "priority": MessageLookupByLibrary.simpleMessage("الأولوية"),
     "progress": MessageLookupByLibrary.simpleMessage("التقدم"),
     "reset": MessageLookupByLibrary.simpleMessage("إعادة ضبط"),
@@ -89,7 +132,11 @@ class MessageLookup extends MessageLookupByLibrary {
     "resetSettingsMessage": MessageLookupByLibrary.simpleMessage(
       "هل أنت متأكد أنك تريد إعادة ضبط جميع الإعدادات إلى الافتراضية؟",
     ),
+    "results": MessageLookupByLibrary.simpleMessage("النتائج"),
     "save": MessageLookupByLibrary.simpleMessage("حفظ"),
+    "searchHint": MessageLookupByLibrary.simpleMessage(
+      "ابحث في اللوحات أو المهام...",
+    ),
     "settings": MessageLookupByLibrary.simpleMessage("الإعدادات"),
     "settingsResetToDefault": MessageLookupByLibrary.simpleMessage(
       "تمت إعادة ضبط الإعدادات إلى الافتراضية",

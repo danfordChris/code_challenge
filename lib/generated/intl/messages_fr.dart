@@ -36,6 +36,7 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
     "active": MessageLookupByLibrary.simpleMessage("ACTIF"),
     "addTask": MessageLookupByLibrary.simpleMessage("Ajouter une Tâche"),
+    "all": MessageLookupByLibrary.simpleMessage("Tous"),
     "appearance": MessageLookupByLibrary.simpleMessage("Apparence"),
     "board": MessageLookupByLibrary.simpleMessage("Tableau"),
     "boardName": MessageLookupByLibrary.simpleMessage("Nom du Tableau *"),
@@ -44,12 +45,28 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "cancel": MessageLookupByLibrary.simpleMessage("Annuler"),
     "changeLanguageMessage": m0,
+    "clearDatabase": MessageLookupByLibrary.simpleMessage(
+      "Vider la Base de Données",
+    ),
+    "clearDatabaseMessage": MessageLookupByLibrary.simpleMessage(
+      "Cela supprimera tous les tableaux et toutes les tâches. Cette action est irréversible. Êtes-vous sûr ?",
+    ),
+    "clearFilter": MessageLookupByLibrary.simpleMessage("Effacer le Filtre"),
     "completed": MessageLookupByLibrary.simpleMessage("Terminées"),
     "createBoard": MessageLookupByLibrary.simpleMessage("Créer un Tableau"),
     "createBoardMessage": MessageLookupByLibrary.simpleMessage(
       "Créez votre premier tableau pour commencer",
     ),
     "darkMode": MessageLookupByLibrary.simpleMessage("Mode Sombre"),
+    "dataManagement": MessageLookupByLibrary.simpleMessage(
+      "Gestion des Données",
+    ),
+    "databaseCleared": MessageLookupByLibrary.simpleMessage(
+      "Base de données vidée avec succès",
+    ),
+    "databasePopulated": MessageLookupByLibrary.simpleMessage(
+      "Base de données peuplée avec succès",
+    ),
     "dayAgo": MessageLookupByLibrary.simpleMessage("j"),
     "delete": MessageLookupByLibrary.simpleMessage("Supprimer"),
     "deleteTask": MessageLookupByLibrary.simpleMessage("Supprimer la Tâche"),
@@ -66,10 +83,31 @@ class MessageLookup extends MessageLookupByLibrary {
     "edit": MessageLookupByLibrary.simpleMessage("Modifier"),
     "editBoard": MessageLookupByLibrary.simpleMessage("Modifier le Tableau"),
     "editTask": MessageLookupByLibrary.simpleMessage("Modifier la Tâche"),
+    "failedToChangeLanguage": MessageLookupByLibrary.simpleMessage(
+      "Échec du changement de langue",
+    ),
+    "failedToChangeTheme": MessageLookupByLibrary.simpleMessage(
+      "Échec du changement de thème",
+    ),
+    "failedToClearDatabase": MessageLookupByLibrary.simpleMessage(
+      "Échec du vidage de la base de données",
+    ),
     "failedToDeleteData": m1,
     "failedToLoadData": m2,
+    "failedToLoadSettings": MessageLookupByLibrary.simpleMessage(
+      "Échec du chargement des paramètres",
+    ),
+    "failedToPopulateDatabase": MessageLookupByLibrary.simpleMessage(
+      "Échec du peuplement de la base de données",
+    ),
+    "failedToResetSettings": MessageLookupByLibrary.simpleMessage(
+      "Échec de la réinitialisation des paramètres",
+    ),
     "failedToSaveData": m3,
     "failedToUpdateData": m4,
+    "filterByStatus": MessageLookupByLibrary.simpleMessage(
+      "Filtrer par Statut de Tâche",
+    ),
     "high": MessageLookupByLibrary.simpleMessage("Haute"),
     "hourAgo": MessageLookupByLibrary.simpleMessage("h"),
     "inProgress": MessageLookupByLibrary.simpleMessage("En Cours"),
@@ -82,6 +120,15 @@ class MessageLookup extends MessageLookupByLibrary {
     "noBoardsYet": MessageLookupByLibrary.simpleMessage(
       "Pas encore de tableaux",
     ),
+    "noResultsFound": MessageLookupByLibrary.simpleMessage(
+      "Aucun résultat trouvé",
+    ),
+    "populateDatabase": MessageLookupByLibrary.simpleMessage(
+      "Peupler la Base de Données",
+    ),
+    "populateDatabaseMessage": MessageLookupByLibrary.simpleMessage(
+      "Cela ajoutera des exemples de données à votre base de données. Êtes-vous sûr ?",
+    ),
     "priority": MessageLookupByLibrary.simpleMessage("Priorité"),
     "progress": MessageLookupByLibrary.simpleMessage("Progression"),
     "reset": MessageLookupByLibrary.simpleMessage("Réinitialiser"),
@@ -91,7 +138,11 @@ class MessageLookup extends MessageLookupByLibrary {
     "resetSettingsMessage": MessageLookupByLibrary.simpleMessage(
       "Êtes-vous sûr de vouloir réinitialiser tous les paramètres par défaut ?",
     ),
+    "results": MessageLookupByLibrary.simpleMessage("Résultats"),
     "save": MessageLookupByLibrary.simpleMessage("Enregistrer"),
+    "searchHint": MessageLookupByLibrary.simpleMessage(
+      "Rechercher des tableaux ou des tâches...",
+    ),
     "settings": MessageLookupByLibrary.simpleMessage("Paramètres"),
     "settingsResetToDefault": MessageLookupByLibrary.simpleMessage(
       "Paramètres réinitialisés par défaut",

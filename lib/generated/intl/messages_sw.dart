@@ -36,6 +36,7 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
     "active": MessageLookupByLibrary.simpleMessage("INAYOFANYA KAZI"),
     "addTask": MessageLookupByLibrary.simpleMessage("Ongeza Kazi"),
+    "all": MessageLookupByLibrary.simpleMessage("Zote"),
     "appearance": MessageLookupByLibrary.simpleMessage("Mwonekano"),
     "board": MessageLookupByLibrary.simpleMessage("Mbao"),
     "boardName": MessageLookupByLibrary.simpleMessage("Jina la Mbao *"),
@@ -44,12 +45,24 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "cancel": MessageLookupByLibrary.simpleMessage("Ghairi"),
     "changeLanguageMessage": m0,
+    "clearDatabase": MessageLookupByLibrary.simpleMessage("Futa Hifadhidata"),
+    "clearDatabaseMessage": MessageLookupByLibrary.simpleMessage(
+      "Hii itafuta mbao na kazi zote. Kitendo hiki hakiwezi kutenduliwa. Una uhakika?",
+    ),
+    "clearFilter": MessageLookupByLibrary.simpleMessage("Futa Kichujio"),
     "completed": MessageLookupByLibrary.simpleMessage("Imekamilika"),
     "createBoard": MessageLookupByLibrary.simpleMessage("Unda Mbao"),
     "createBoardMessage": MessageLookupByLibrary.simpleMessage(
       "Unda mbao yako ya kwanza kuanza",
     ),
     "darkMode": MessageLookupByLibrary.simpleMessage("Hali ya Giza"),
+    "dataManagement": MessageLookupByLibrary.simpleMessage("Usimamizi wa Data"),
+    "databaseCleared": MessageLookupByLibrary.simpleMessage(
+      "Hifadhidata imefutwa kwa mafanikio",
+    ),
+    "databasePopulated": MessageLookupByLibrary.simpleMessage(
+      "Hifadhidata imejazwa kwa mafanikio",
+    ),
     "dayAgo": MessageLookupByLibrary.simpleMessage("s iliyopita"),
     "delete": MessageLookupByLibrary.simpleMessage("Futa"),
     "deleteTask": MessageLookupByLibrary.simpleMessage("Futa Kazi"),
@@ -66,10 +79,31 @@ class MessageLookup extends MessageLookupByLibrary {
     "edit": MessageLookupByLibrary.simpleMessage("Hariri"),
     "editBoard": MessageLookupByLibrary.simpleMessage("Hariri Mbao"),
     "editTask": MessageLookupByLibrary.simpleMessage("Hariri Kazi"),
+    "failedToChangeLanguage": MessageLookupByLibrary.simpleMessage(
+      "Imeshindwa kubadilisha lugha",
+    ),
+    "failedToChangeTheme": MessageLookupByLibrary.simpleMessage(
+      "Imeshindwa kubadilisha mandhari",
+    ),
+    "failedToClearDatabase": MessageLookupByLibrary.simpleMessage(
+      "Imeshindwa kufuta hifadhidata",
+    ),
     "failedToDeleteData": m1,
     "failedToLoadData": m2,
+    "failedToLoadSettings": MessageLookupByLibrary.simpleMessage(
+      "Imeshindwa kupakia mipangilio",
+    ),
+    "failedToPopulateDatabase": MessageLookupByLibrary.simpleMessage(
+      "Imeshindwa kujaza hifadhidata",
+    ),
+    "failedToResetSettings": MessageLookupByLibrary.simpleMessage(
+      "Imeshindwa kuweka upya mipangilio",
+    ),
     "failedToSaveData": m3,
     "failedToUpdateData": m4,
+    "filterByStatus": MessageLookupByLibrary.simpleMessage(
+      "Chuja kwa Hali ya Kazi",
+    ),
     "high": MessageLookupByLibrary.simpleMessage("Juu"),
     "hourAgo": MessageLookupByLibrary.simpleMessage("saa iliyopita"),
     "inProgress": MessageLookupByLibrary.simpleMessage("Inaendelea"),
@@ -80,6 +114,15 @@ class MessageLookup extends MessageLookupByLibrary {
     "medium": MessageLookupByLibrary.simpleMessage("Kati"),
     "minuteAgo": MessageLookupByLibrary.simpleMessage("d iliyopita"),
     "noBoardsYet": MessageLookupByLibrary.simpleMessage("Hakuna mbao bado"),
+    "noResultsFound": MessageLookupByLibrary.simpleMessage(
+      "Hakuna matokeo yaliyopatikana",
+    ),
+    "populateDatabase": MessageLookupByLibrary.simpleMessage(
+      "Jaza Hifadhidata",
+    ),
+    "populateDatabaseMessage": MessageLookupByLibrary.simpleMessage(
+      "Hii itaongeza data ya mfano kwenye hifadhidata yako. Una uhakika?",
+    ),
     "priority": MessageLookupByLibrary.simpleMessage("Kipaumbele"),
     "progress": MessageLookupByLibrary.simpleMessage("Maendeleo"),
     "reset": MessageLookupByLibrary.simpleMessage("Weka upya"),
@@ -89,7 +132,11 @@ class MessageLookup extends MessageLookupByLibrary {
     "resetSettingsMessage": MessageLookupByLibrary.simpleMessage(
       "Una uhakika unataka kuweka upya mipangilio yote kwa chaguomsingi?",
     ),
+    "results": MessageLookupByLibrary.simpleMessage("Matokeo"),
     "save": MessageLookupByLibrary.simpleMessage("Hifadhi"),
+    "searchHint": MessageLookupByLibrary.simpleMessage(
+      "Tafuta mbao au kazi...",
+    ),
     "settings": MessageLookupByLibrary.simpleMessage("Mipangilio"),
     "settingsResetToDefault": MessageLookupByLibrary.simpleMessage(
       "Mipangilio imewekwa upya kwa chaguomsingi",

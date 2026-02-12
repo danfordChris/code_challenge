@@ -13,8 +13,9 @@ class TaskCard extends ConsumerWidget {
   final Color color;
   final bool isDraggable;
   final String boardId;
+  final bool isHighlighted;
 
-  const TaskCard({super.key, required this.task, required this.color, this.isDraggable = false, required this.boardId});
+  const TaskCard({super.key, required this.task, required this.color, this.isDraggable = false, required this.boardId, this.isHighlighted = false});
 
   void _editTask(BuildContext context, WidgetRef ref) {
     showModalBottomSheet(
@@ -62,12 +63,13 @@ class TaskCard extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return Container(
+    return AnimatedContainer(
+      duration: const Duration(milliseconds: 500),
       margin: const EdgeInsets.only(bottom: 8),
       decoration: BoxDecoration(
-        color: context.colorScheme.surface,
+        color: isHighlighted ? color.withOpacity(0.1) : context.colorScheme.surface,
         borderRadius: BorderRadius.circular(8),
-        border: Border.all(color: context.colorScheme.outline.withOpacity(0.1)),
+        border: Border.all(color: isHighlighted ? color : context.colorScheme.outline.withOpacity(0.1), width: isHighlighted ? 2 : 1),
         boxShadow: [BoxShadow(color: context.colorScheme.onSurface.withOpacity(0.05), blurRadius: 4, offset: const Offset(0, 2))],
       ),
       child: PopupMenuButton<PopupMenuOptions>(

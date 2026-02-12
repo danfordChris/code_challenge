@@ -46,6 +46,7 @@ dependencies:
   permission_handler: ^11.4.0
   hugeicons: ^0.0.10
   pinput: ^6.0.1
+  faker: ^2.1.0
   flutter_riverpod: ^2.6.1
   riverpod_lint: ^2.6.5
 #  flutter_pack: ^1.0.9+1

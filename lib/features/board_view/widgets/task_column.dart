@@ -12,8 +12,17 @@ class TaskColumn extends ConsumerStatefulWidget {
   final Color color;
   final double width;
   final String boardId;
+  final String? highlightTaskId;
 
-  const TaskColumn({super.key, required this.title, required this.status, required this.color, required this.width, required this.boardId});
+  const TaskColumn({
+    super.key,
+    required this.title,
+    required this.status,
+    required this.color,
+    required this.width,
+    required this.boardId,
+    this.highlightTaskId,
+  });
 
   @override
   ConsumerState<TaskColumn> createState() => _TaskColumnState();
@@ -87,6 +96,7 @@ class _TaskColumnState extends ConsumerState<TaskColumn> {
                       });
                     },
                     isDraggedTask: (task) => _draggedTask?.id == task.id,
+                    highlightTaskId: widget.highlightTaskId,
                   ),
                 ),
               ],
@@ -98,7 +108,7 @@ class _TaskColumnState extends ConsumerState<TaskColumn> {
   }
 }
 
-class TaskListView extends StatelessWidget {
+class TaskListView extends StatefulWidget {
   final List<TaskModel> tasks;
   final String boardId;
   final Color columnColor;
@@ -106,6 +116,7 @@ class TaskListView extends StatelessWidget {
   final void Function(TaskModel) onDragStarted;
   final VoidCallback onDragEnd;
   final bool Function(TaskModel) isDraggedTask;
+  final String? highlightTaskId;
 
   const TaskListView({
     super.key,
@@ -116,16 +127,49 @@ class TaskListView extends StatelessWidget {
     required this.onDragEnd,
     required this.isDraggedTask,
     required this.boardId,
+    this.highlightTaskId,
   });
+
+  @override
+  State<TaskListView> createState() => _TaskListViewState();
+}
+
+class _TaskListViewState extends State<TaskListView> {
+  final ScrollController _scrollController = ScrollController();
+
+  @override
+  void initState() {
+    super.initState();
+    if (widget.highlightTaskId != null) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        final index = widget.tasks.indexWhere((t) => t.id == widget.highlightTaskId);
+        if (index != -1) {
+          _scrollController.animateTo(
+            index * 110.0, // Rough estimate of TaskCard height + margin
+            duration: const Duration(milliseconds: 500),
+            curve: Curves.easeInOut,
+          );
+        }
+      });
+    }
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
+      controller: _scrollController,
       padding: const EdgeInsets.symmetric(horizontal: 8),
-      itemCount: tasks.length,
+      itemCount: widget.tasks.length,
       itemBuilder: (context, index) {
-        final task = tasks[index];
-        final isDragging = isDraggedTask(task);
+        final task = widget.tasks[index];
+        final isDragging = widget.isDraggedTask(task);
+        final isHighlighted = task.id == widget.highlightTaskId;
 
         return Draggable<TaskModel>(
           data: task,
@@ -133,20 +177,20 @@ class TaskListView extends StatelessWidget {
             elevation: 8,
             borderRadius: BorderRadius.circular(8),
             child: ConstrainedBox(
-              constraints: BoxConstraints(maxWidth: columnWidth - 32),
+              constraints: BoxConstraints(maxWidth: widget.columnWidth - 32),
               child: Opacity(
                 opacity: 0.9,
-                child: TaskCard(task: task, color: columnColor, isDraggable: true, boardId: boardId),
+                child: TaskCard(task: task, color: widget.columnColor, isDraggable: true, boardId: widget.boardId),
               ),
             ),
           ),
           childWhenDragging: Opacity(
             opacity: 0.3,
-            child: TaskCard(task: task, color: columnColor, boardId: boardId),
+            child: TaskCard(task: task, color: widget.columnColor, boardId: widget.boardId),
           ),
-          onDragStarted: () => onDragStarted(task),
-          onDragEnd: (details) => onDragEnd(),
-          child: TaskCard(task: task, color: columnColor, boardId: boardId),
+          onDragStarted: () => widget.onDragStarted(task),
+          onDragEnd: (details) => widget.onDragEnd(),
+          child: TaskCard(task: task, color: widget.columnColor, boardId: widget.boardId, isHighlighted: isHighlighted),
         );
       },
     );

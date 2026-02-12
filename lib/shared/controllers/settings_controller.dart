@@ -1,5 +1,12 @@
-import 'package:code_challenge/services/session_manager.dart';
+import 'package:code_challenge/features/dashboard/controller/boards_controller.dart';
+import 'package:code_challenge/models/boards_model.dart';
+import 'package:code_challenge/models/task_model.dart';
+import 'package:code_challenge/repositories/boards_repository.dart';
+import 'package:code_challenge/repositories/task_repository.dart';
+import 'package:code_challenge/services/localization_service.dart';
 import 'package:code_challenge/services/preferences.dart';
+import 'package:code_challenge/services/session_manager.dart';
+import 'package:faker/faker.dart' as f;
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -82,7 +89,7 @@ class SettingsController extends Notifier<SettingsControllerState> {
       final themeMode = _mapToThemeMode(isDarkMode);
       state = state.copyWith(language: currentLanguage, themeMode: themeMode, isLoading: false);
     } catch (e) {
-      state = state.copyWith(isLoading: false, error: 'Failed to load settings: $e');
+      state = state.copyWith(isLoading: false, error: '${Strings.instance.failedToLoadSettings}: $e');
     }
   }
 
@@ -94,7 +101,7 @@ class SettingsController extends Notifier<SettingsControllerState> {
       _preferences.save(PrefKeys.language, language.code);
       state = state.copyWith(isLoading: false);
     } catch (e) {
-      state = state.copyWith(isLoading: false, error: 'Failed to change language: $e');
+      state = state.copyWith(isLoading: false, error: '${Strings.instance.failedToChangeLanguage}: $e');
     }
   }
 
@@ -106,7 +113,7 @@ class SettingsController extends Notifier<SettingsControllerState> {
       _preferences.save(PrefKeys.darkMode, themeValue);
       state = state.copyWith(isLoading: false);
     } catch (e) {
-      state = state.copyWith(isLoading: false, error: 'Failed to change theme: $e');
+      state = state.copyWith(isLoading: false, error: '${Strings.instance.failedToChangeTheme}: $e');
     }
   }
 
@@ -128,7 +135,63 @@ class SettingsController extends Notifier<SettingsControllerState> {
       _sessionManager.setLanguage(defaultLanguage);
       state = state.copyWith(language: defaultLanguage, themeMode: defaultTheme, isLoading: false);
     } catch (e) {
-      state = state.copyWith(isLoading: false, error: 'Failed to reset settings: $e');
+      state = state.copyWith(isLoading: false, error: '${Strings.instance.failedToResetSettings}: $e');
+    }
+  }
+
+  Future<void> clearDatabase() async {
+    try {
+      state = state.copyWith(isLoading: true, error: null);
+      final boards = await BoardsRepository.instance.all;
+      for (var board in boards) {
+        await BoardsRepository.instance.delete(board);
+      }
+      final tasks = await TaskRepository.instance.all;
+      for (var task in tasks) {
+        await TaskRepository.instance.delete(task);
+      }
+      state = state.copyWith(isLoading: false);
+      ref.read(boardsProvider.notifier).loadBoards();
+    } catch (e) {
+      state = state.copyWith(isLoading: false, error: '${Strings.instance.failedToClearDatabase}: $e');
+    }
+  }
+
+  Future<void> populateDatabase() async {
+    try {
+      state = state.copyWith(isLoading: true, error: null);
+      final faker = f.Faker();
+
+      for (int i = 0; i < 5; i++) {
+        final boardId = DateTime.now().millisecondsSinceEpoch.toString() + i.toString();
+        final board = BoardsModel(
+          id: boardId,
+          boardName: faker.lorem.word().toUpperCase(),
+          description: faker.lorem.sentence(),
+          createdAt: DateTime.now().toString(),
+          updatedAt: DateTime.now().toString(),
+        );
+        await BoardsRepository.instance.save(board);
+
+        for (int j = 0; j < 10; j++) {
+          final task = TaskModel(
+            id: DateTime.now().millisecondsSinceEpoch.toString() + i.toString() + j.toString(),
+            boardId: boardId,
+            title: faker.lorem.sentence(),
+            description: faker.lorem.sentence(),
+            priority: faker.randomGenerator.integer(3, min: 1),
+            status: faker.randomGenerator.integer(3, min: 1),
+            createdAt: DateTime.now().toString(),
+            updatedAt: DateTime.now().toString(),
+          );
+          await TaskRepository.instance.save(task);
+        }
+      }
+      state = state.copyWith(isLoading: false);
+
+      ref.read(boardsProvider.notifier).loadBoards();
+    } catch (e) {
+      state = state.copyWith(isLoading: false, error: '${Strings.instance.failedToPopulateDatabase}: $e');
     }
   }
 
