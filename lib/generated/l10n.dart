@@ -633,6 +633,76 @@ class S {
       args: [],
     );
   }
+
+  /// `Failed to export data`
+  String get failedToExportData {
+    return Intl.message(
+      'Failed to export data',
+      name: 'failedToExportData',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Export Data`
+  String get exportData {
+    return Intl.message('Export Data', name: 'exportData', desc: '', args: []);
+  }
+
+  /// `Import Data`
+  String get importData {
+    return Intl.message('Import Data', name: 'importData', desc: '', args: []);
+  }
+
+  /// `This will export your boards and tasks to a JSON file. Are you sure?`
+  String get exportDataMessage {
+    return Intl.message(
+      'This will export your boards and tasks to a JSON file. Are you sure?',
+      name: 'exportDataMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `This will import boards and tasks from a JSON file. This may overwrite existing data. Are you sure?`
+  String get importDataMessage {
+    return Intl.message(
+      'This will import boards and tasks from a JSON file. This may overwrite existing data. Are you sure?',
+      name: 'importDataMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Data exported successfully`
+  String get dataExported {
+    return Intl.message(
+      'Data exported successfully',
+      name: 'dataExported',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Data imported successfully`
+  String get dataImportedSuccessfully {
+    return Intl.message(
+      'Data imported successfully',
+      name: 'dataImportedSuccessfully',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Failed to import data`
+  String get failedToImportData {
+    return Intl.message(
+      'Failed to import data',
+      name: 'failedToImportData',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

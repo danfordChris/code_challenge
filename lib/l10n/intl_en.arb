@@ -82,5 +82,13 @@
   "failedToLoadSettings":"Failed to load settings",
   "failedToChangeLanguage":"Failed to change language",
   "failedToChangeTheme":"Failed to change theme",
-  "failedToPopulateDatabase":"Failed to populate database"
+  "failedToPopulateDatabase":"Failed to populate database",
+  "failedToExportData":"Failed to export data",
+  "exportData": "Export Data",
+  "importData": "Import Data",
+   "exportDataMessage": "This will export your boards and tasks to a JSON file. Are you sure?", 
+   "importDataMessage": "This will import boards and tasks from a JSON file. This may overwrite existing data. Are you sure?",
+   "dataExported": "Data exported successfully", 
+   "dataImportedSuccessfully": "Data imported successfully", 
+   "failedToImportData":"Failed to import data"
 }

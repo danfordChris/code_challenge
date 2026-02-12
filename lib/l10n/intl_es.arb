@@ -81,5 +81,9 @@
   "failedToLoadSettings": "Error al cargar la configuración",
   "failedToChangeLanguage": "Error al cambiar el idioma",
   "failedToChangeTheme": "Error al cambiar el tema",
-  "failedToPopulateDatabase": "Error al poblar la base de datos"
+  "failedToPopulateDatabase": "Error al poblar la base de datos",
+  "failedToExportData": "Error al exportar los datos",
+    "exportData": "Exportar Datos", "importData": "Importar Datos", "exportDataMessage": "Esto exportará tus tableros y tareas a un archivo JSON. ¿Estás seguro?", "importDataMessage": "Esto importará tableros y tareas desde un archivo JSON. Esto puede sobrescribir los datos existentes. ¿Estás seguro?", "dataExported": "Datos exportados exitosamente", "dataImportedSuccessfully": "Datos importados exitosamente", "failedToImportData":"Error al importar los datos"
+
+
 }

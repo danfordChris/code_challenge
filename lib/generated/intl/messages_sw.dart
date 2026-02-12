@@ -56,6 +56,12 @@ class MessageLookup extends MessageLookupByLibrary {
       "Unda mbao yako ya kwanza kuanza",
     ),
     "darkMode": MessageLookupByLibrary.simpleMessage("Hali ya Giza"),
+    "dataExported": MessageLookupByLibrary.simpleMessage(
+      "Data imesafirishwa kwa mafanikio",
+    ),
+    "dataImportedSuccessfully": MessageLookupByLibrary.simpleMessage(
+      "Data imeingizwa kwa mafanikio",
+    ),
     "dataManagement": MessageLookupByLibrary.simpleMessage("Usimamizi wa Data"),
     "databaseCleared": MessageLookupByLibrary.simpleMessage(
       "Hifadhidata imefutwa kwa mafanikio",
@@ -79,6 +85,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "edit": MessageLookupByLibrary.simpleMessage("Hariri"),
     "editBoard": MessageLookupByLibrary.simpleMessage("Hariri Mbao"),
     "editTask": MessageLookupByLibrary.simpleMessage("Hariri Kazi"),
+    "exportData": MessageLookupByLibrary.simpleMessage("Safirisha Data"),
+    "exportDataMessage": MessageLookupByLibrary.simpleMessage(
+      "Hii itasafirisha mbao zako na kazi zako kwenye faili la JSON. Una uhakika?",
+    ),
     "failedToChangeLanguage": MessageLookupByLibrary.simpleMessage(
       "Imeshindwa kubadilisha lugha",
     ),
@@ -89,6 +99,12 @@ class MessageLookup extends MessageLookupByLibrary {
       "Imeshindwa kufuta hifadhidata",
     ),
     "failedToDeleteData": m1,
+    "failedToExportData": MessageLookupByLibrary.simpleMessage(
+      "Imeshindwa kusafirisha data",
+    ),
+    "failedToImportData": MessageLookupByLibrary.simpleMessage(
+      "Imeshindwa kuingiza data",
+    ),
     "failedToLoadData": m2,
     "failedToLoadSettings": MessageLookupByLibrary.simpleMessage(
       "Imeshindwa kupakia mipangilio",
@@ -106,6 +122,10 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "high": MessageLookupByLibrary.simpleMessage("Juu"),
     "hourAgo": MessageLookupByLibrary.simpleMessage("saa iliyopita"),
+    "importData": MessageLookupByLibrary.simpleMessage("Ingiza Data"),
+    "importDataMessage": MessageLookupByLibrary.simpleMessage(
+      "Hii itaingiza mbao na kazi kutoka kwa faili la JSON. Hii inaweza kuandika data iliyopo. Una uhakika?",
+    ),
     "inProgress": MessageLookupByLibrary.simpleMessage("Inaendelea"),
     "justNow": MessageLookupByLibrary.simpleMessage("Sasa hivi"),
     "language": MessageLookupByLibrary.simpleMessage("Lugha"),

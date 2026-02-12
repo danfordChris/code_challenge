@@ -79,9 +79,14 @@ class SearchSuggestion {
 class BoardsController extends Notifier<BoardsControllerState> {
   @override
   BoardsControllerState build() {
-    _initialize();
+    final initialState = BoardsControllerState.initial();
 
-    return BoardsControllerState.initial();
+    // Defer async initialization until after provider is mounted
+    Future.microtask(() {
+      _initialize();
+    });
+
+    return initialState;
   }
 
   Future<void> _initialize() async {
@@ -129,6 +134,7 @@ class BoardsController extends Notifier<BoardsControllerState> {
         board.taskCount = tasks.length;
         board.completedTaskCount = completedTask.length;
       }
+
       state = state.copyWith(boards: boards, isLoading: false);
       _applyFilterAndSearch();
       loadTaskCount();

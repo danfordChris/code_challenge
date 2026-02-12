@@ -56,6 +56,12 @@ class MessageLookup extends MessageLookupByLibrary {
       "Create your first board to get started",
     ),
     "darkMode": MessageLookupByLibrary.simpleMessage("Dark Mode"),
+    "dataExported": MessageLookupByLibrary.simpleMessage(
+      "Data exported successfully",
+    ),
+    "dataImportedSuccessfully": MessageLookupByLibrary.simpleMessage(
+      "Data imported successfully",
+    ),
     "dataManagement": MessageLookupByLibrary.simpleMessage("Data Management"),
     "databaseCleared": MessageLookupByLibrary.simpleMessage(
       "Database cleared successfully",
@@ -79,6 +85,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "edit": MessageLookupByLibrary.simpleMessage("Edit"),
     "editBoard": MessageLookupByLibrary.simpleMessage("Edit Board"),
     "editTask": MessageLookupByLibrary.simpleMessage("Edit Task"),
+    "exportData": MessageLookupByLibrary.simpleMessage("Export Data"),
+    "exportDataMessage": MessageLookupByLibrary.simpleMessage(
+      "This will export your boards and tasks to a JSON file. Are you sure?",
+    ),
     "failedToChangeLanguage": MessageLookupByLibrary.simpleMessage(
       "Failed to change language",
     ),
@@ -89,6 +99,12 @@ class MessageLookup extends MessageLookupByLibrary {
       "Failed to clear database",
     ),
     "failedToDeleteData": m1,
+    "failedToExportData": MessageLookupByLibrary.simpleMessage(
+      "Failed to export data",
+    ),
+    "failedToImportData": MessageLookupByLibrary.simpleMessage(
+      "Failed to import data",
+    ),
     "failedToLoadData": m2,
     "failedToLoadSettings": MessageLookupByLibrary.simpleMessage(
       "Failed to load settings",
@@ -106,6 +122,10 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "high": MessageLookupByLibrary.simpleMessage("High"),
     "hourAgo": MessageLookupByLibrary.simpleMessage("h ago"),
+    "importData": MessageLookupByLibrary.simpleMessage("Import Data"),
+    "importDataMessage": MessageLookupByLibrary.simpleMessage(
+      "This will import boards and tasks from a JSON file. This may overwrite existing data. Are you sure?",
+    ),
     "inProgress": MessageLookupByLibrary.simpleMessage("In Progress"),
     "justNow": MessageLookupByLibrary.simpleMessage("Just now"),
     "language": MessageLookupByLibrary.simpleMessage("Language"),

@@ -71,9 +71,13 @@ class SettingsController extends Notifier<SettingsControllerState> {
   SettingsControllerState build() {
     _preferences = Preferences.instance;
     _sessionManager = SessionManager.instance;
-    _initialize();
 
-    return SettingsControllerState.initial();
+    final initialState = SettingsControllerState.initial();
+
+    // Run async initialization after provider is fully built
+    Future.microtask(_initialize);
+
+    return initialState;
   }
 
   Future<void> _initialize() async {
@@ -192,6 +196,52 @@ class SettingsController extends Notifier<SettingsControllerState> {
       ref.read(boardsProvider.notifier).loadBoards();
     } catch (e) {
       state = state.copyWith(isLoading: false, error: '${Strings.instance.failedToPopulateDatabase}: $e');
+    }
+  }
+
+  Future<List<Map<String, Object>>> exportData() async {
+    try {
+      state = state.copyWith(isLoading: true, error: null);
+      final boards = await BoardsRepository.instance.all;
+      final tasks = await TaskRepository.instance.all;
+
+      List<Map<String, Object>> boardsWithTasks = boards.map((board) {
+        final boardTasks = tasks.where((task) => task.boardId == board.id).toList();
+        return {'board': board.toJson, 'tasks': boardTasks.map((t) => t.toJson).toList()};
+      }).toList();
+      state = state.copyWith(isLoading: false);
+      return boardsWithTasks;
+    } catch (e) {
+      state = state.copyWith(isLoading: false, error: '${Strings.instance.failedToExportData}: $e');
+      return [];
+    }
+  }
+
+  Future<void> importData(List<dynamic> jsonData) async {
+    try {
+      state = state.copyWith(isLoading: true, error: null);
+
+      for (final item in jsonData) {
+        final boardJson = item['board'] as Map<String, dynamic>;
+        final tasksJson = item['tasks'] as List<dynamic>;
+
+        // Recreate board
+        final board = BoardsModel.fromJson(boardJson);
+        await BoardsRepository.instance.save(board);
+
+        // Recreate tasks for this board
+        for (final taskJson in tasksJson) {
+          final task = TaskModel.fromJson(taskJson as Map<String, dynamic>);
+          await TaskRepository.instance.save(task);
+        }
+      }
+
+      state = state.copyWith(isLoading: false);
+
+      // Reload boards after import
+      ref.read(boardsProvider.notifier).loadBoards();
+    } catch (e) {
+      state = state.copyWith(isLoading: false, error: '${Strings.instance.failedToImportData}: $e');
     }
   }
 

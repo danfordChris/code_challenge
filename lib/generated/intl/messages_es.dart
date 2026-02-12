@@ -58,6 +58,12 @@ class MessageLookup extends MessageLookupByLibrary {
       "Crea tu primer tablero para comenzar",
     ),
     "darkMode": MessageLookupByLibrary.simpleMessage("Modo Oscuro"),
+    "dataExported": MessageLookupByLibrary.simpleMessage(
+      "Datos exportados exitosamente",
+    ),
+    "dataImportedSuccessfully": MessageLookupByLibrary.simpleMessage(
+      "Datos importados exitosamente",
+    ),
     "dataManagement": MessageLookupByLibrary.simpleMessage("Gestión de Datos"),
     "databaseCleared": MessageLookupByLibrary.simpleMessage(
       "Base de datos limpiada exitosamente",
@@ -81,6 +87,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "edit": MessageLookupByLibrary.simpleMessage("Editar"),
     "editBoard": MessageLookupByLibrary.simpleMessage("Editar Tablero"),
     "editTask": MessageLookupByLibrary.simpleMessage("Editar Tarea"),
+    "exportData": MessageLookupByLibrary.simpleMessage("Exportar Datos"),
+    "exportDataMessage": MessageLookupByLibrary.simpleMessage(
+      "Esto exportará tus tableros y tareas a un archivo JSON. ¿Estás seguro?",
+    ),
     "failedToChangeLanguage": MessageLookupByLibrary.simpleMessage(
       "Error al cambiar el idioma",
     ),
@@ -91,6 +101,12 @@ class MessageLookup extends MessageLookupByLibrary {
       "Error al limpiar la base de datos",
     ),
     "failedToDeleteData": m1,
+    "failedToExportData": MessageLookupByLibrary.simpleMessage(
+      "Error al exportar los datos",
+    ),
+    "failedToImportData": MessageLookupByLibrary.simpleMessage(
+      "Error al importar los datos",
+    ),
     "failedToLoadData": m2,
     "failedToLoadSettings": MessageLookupByLibrary.simpleMessage(
       "Error al cargar la configuración",
@@ -108,6 +124,10 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "high": MessageLookupByLibrary.simpleMessage("Alta"),
     "hourAgo": MessageLookupByLibrary.simpleMessage("h"),
+    "importData": MessageLookupByLibrary.simpleMessage("Importar Datos"),
+    "importDataMessage": MessageLookupByLibrary.simpleMessage(
+      "Esto importará tableros y tareas desde un archivo JSON. Esto puede sobrescribir los datos existentes. ¿Estás seguro?",
+    ),
     "inProgress": MessageLookupByLibrary.simpleMessage("En Progreso"),
     "justNow": MessageLookupByLibrary.simpleMessage("Ahora mismo"),
     "language": MessageLookupByLibrary.simpleMessage("Idioma"),

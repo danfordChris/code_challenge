@@ -1,3 +1,6 @@
+import 'dart:convert';
+import 'dart:io';
+
 import 'package:code_challenge/core/extensions/build_context_extensions.dart';
 import 'package:code_challenge/features/user_profile/widgets/language_options.dart';
 import 'package:code_challenge/features/user_profile/widgets/profile_header.dart';
@@ -6,9 +9,12 @@ import 'package:code_challenge/features/user_profile/widgets/settings_card.dart'
 import 'package:code_challenge/features/user_profile/widgets/theme_options.dart';
 import 'package:code_challenge/services/localization_service.dart';
 import 'package:code_challenge/shared/controllers/settings_controller.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hugeicons/hugeicons.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:share_plus/share_plus.dart';
 
 class UserProfileScreen extends ConsumerStatefulWidget {
   const UserProfileScreen({super.key});
@@ -23,7 +29,6 @@ class _UserProfileScreenState extends ConsumerState<UserProfileScreen> {
     final settingsState = ref.watch(settingsProvider);
     final error = settingsState.error;
 
-    // Show error snackbar if there's an error
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (error != null && mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
@@ -71,6 +76,22 @@ class _UserProfileScreenState extends ConsumerState<UserProfileScreen> {
               }
             },
           ),
+          IconButton(
+            icon: HugeIcon(icon: HugeIcons.strokeRoundedShare01, size: 20, color: context.colorScheme.onSurface),
+            onPressed: () async {
+              final data = await ref.read(settingsProvider.notifier).exportData();
+
+              final jsonString = jsonEncode(data);
+
+              final directory = await getTemporaryDirectory();
+              final file = File('${directory.path}/exported_data.json');
+              await file.writeAsString(jsonString);
+
+              SharePlus.instance.share(
+                ShareParams(files: [XFile(file.path)], text: Strings.instance.exportData, subject: Strings.instance.exportData),
+              );
+            },
+          ),
         ],
       ),
       body: ListView(
@@ -100,6 +121,28 @@ class _UserProfileScreenState extends ConsumerState<UserProfileScreen> {
           const SizedBox(height: 16),
           SettingsCard(
             children: [
+              ListTile(
+                leading: const HugeIcon(icon: HugeIcons.strokeRoundedDatabaseExport, color: Colors.green),
+                title: Text(Strings.instance.importData),
+                onTap: () async {
+                  final result = await FilePicker.platform.pickFiles(type: FileType.custom, allowedExtensions: ['json']);
+
+                  if (result != null && result.files.single.path != null) {
+                    final file = File(result.files.single.path!);
+                    final content = await file.readAsString();
+                    final jsonData = jsonDecode(content);
+
+                    await ref.read(settingsProvider.notifier).importData(jsonData);
+
+                    if (mounted) {
+                      ScaffoldMessenger.of(
+                        context,
+                      ).showSnackBar(SnackBar(content: Text(Strings.instance.dataImportedSuccessfully), behavior: SnackBarBehavior.floating));
+                    }
+                  }
+                },
+              ),
+              const Divider(height: 1),
               ListTile(
                 leading: const HugeIcon(icon: HugeIcons.strokeRoundedDatabaseImport, color: Colors.blue),
                 title: Text(Strings.instance.populateDatabase),

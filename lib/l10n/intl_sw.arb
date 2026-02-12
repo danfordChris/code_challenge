@@ -81,5 +81,15 @@
   "failedToLoadSettings": "Imeshindwa kupakia mipangilio",
   "failedToChangeLanguage": "Imeshindwa kubadilisha lugha",
   "failedToChangeTheme": "Imeshindwa kubadilisha mandhari",
-  "failedToPopulateDatabase": "Imeshindwa kujaza hifadhidata"
+  "failedToPopulateDatabase": "Imeshindwa kujaza hifadhidata",
+    "failedToExportData":"Imeshindwa kusafirisha data",
+      "exportData": "Safirisha Data",
+  "importData": "Ingiza Data",
+   "exportDataMessage": "Hii itasafirisha mbao zako na kazi zako kwenye faili la JSON. Una uhakika?",
+   "importDataMessage": "Hii itaingiza mbao na kazi kutoka kwa faili la JSON. Hii inaweza kuandika data iliyopo. Una uhakika?",
+   "dataExported": "Data imesafirishwa kwa mafanikio", 
+   "dataImportedSuccessfully": "Data imeingizwa kwa mafanikio", 
+   "failedToImportData":"Imeshindwa kuingiza data"
+
+
 }

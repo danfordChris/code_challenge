@@ -81,5 +81,13 @@
   "failedToLoadSettings": "Échec du chargement des paramètres",
   "failedToChangeLanguage": "Échec du changement de langue",
   "failedToChangeTheme": "Échec du changement de thème",
-  "failedToPopulateDatabase": "Échec du peuplement de la base de données"
+  "failedToPopulateDatabase": "Échec du peuplement de la base de données",
+  "failedToExportData": "Échec de l'exportation des données",
+    "exportData": "Exporter les Données",
+  "importData": "Importer les Données",
+   "exportDataMessage": "Cela exportera vos tableaux et tâches dans un fichier JSON. Êtes-vous sûr ?", 
+   "importDataMessage": "Cela importera des tableaux et tâches depuis un fichier JSON. Cela peut écraser les données existantes. Êtes-vous sûr ?",
+   "dataExported": "Données exportées avec succès", 
+   "dataImportedSuccessfully": "Données importées avec succès", 
+   "failedToImportData":"Échec de l'importation des données"
 }

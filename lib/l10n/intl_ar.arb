@@ -81,5 +81,14 @@
   "failedToLoadSettings": "فشل تحميل الإعدادات",
   "failedToChangeLanguage": "فشل تغيير اللغة",
   "failedToChangeTheme": "فشل تغيير السمة",
-  "failedToPopulateDatabase": "فشل تعبئة قاعدة البيانات"
+  "failedToPopulateDatabase": "فشل تعبئة قاعدة البيانات",
+  "failedToExportData": "فشل تصدير البيانات",
+    "exportData": "تصدير البيانات",
+  "importData": "استيراد البيانات",
+   "exportDataMessage": "سيؤدي هذا إلى تصدير لوحاتك ومهامك إلى ملف JSON. هل أنت متأكد؟", 
+   "importDataMessage": "سيؤدي هذا إلى استيراد اللوحات والمهام من ملف JSON. قد يؤدي ذلك إلى استبدال البيانات الموجودة. هل أنت متأكد؟",
+   "dataExported": "تم تصدير البيانات بنجاح", 
+   "dataImportedSuccessfully": "تم استيراد البيانات بنجاح", 
+   "failedToImportData":"فشل استيراد البيانات"
+
 }

@@ -58,6 +58,12 @@ class MessageLookup extends MessageLookupByLibrary {
       "Créez votre premier tableau pour commencer",
     ),
     "darkMode": MessageLookupByLibrary.simpleMessage("Mode Sombre"),
+    "dataExported": MessageLookupByLibrary.simpleMessage(
+      "Données exportées avec succès",
+    ),
+    "dataImportedSuccessfully": MessageLookupByLibrary.simpleMessage(
+      "Données importées avec succès",
+    ),
     "dataManagement": MessageLookupByLibrary.simpleMessage(
       "Gestion des Données",
     ),
@@ -83,6 +89,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "edit": MessageLookupByLibrary.simpleMessage("Modifier"),
     "editBoard": MessageLookupByLibrary.simpleMessage("Modifier le Tableau"),
     "editTask": MessageLookupByLibrary.simpleMessage("Modifier la Tâche"),
+    "exportData": MessageLookupByLibrary.simpleMessage("Exporter les Données"),
+    "exportDataMessage": MessageLookupByLibrary.simpleMessage(
+      "Cela exportera vos tableaux et tâches dans un fichier JSON. Êtes-vous sûr ?",
+    ),
     "failedToChangeLanguage": MessageLookupByLibrary.simpleMessage(
       "Échec du changement de langue",
     ),
@@ -93,6 +103,12 @@ class MessageLookup extends MessageLookupByLibrary {
       "Échec du vidage de la base de données",
     ),
     "failedToDeleteData": m1,
+    "failedToExportData": MessageLookupByLibrary.simpleMessage(
+      "Échec de l\'exportation des données",
+    ),
+    "failedToImportData": MessageLookupByLibrary.simpleMessage(
+      "Échec de l\'importation des données",
+    ),
     "failedToLoadData": m2,
     "failedToLoadSettings": MessageLookupByLibrary.simpleMessage(
       "Échec du chargement des paramètres",
@@ -110,6 +126,10 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "high": MessageLookupByLibrary.simpleMessage("Haute"),
     "hourAgo": MessageLookupByLibrary.simpleMessage("h"),
+    "importData": MessageLookupByLibrary.simpleMessage("Importer les Données"),
+    "importDataMessage": MessageLookupByLibrary.simpleMessage(
+      "Cela importera des tableaux et tâches depuis un fichier JSON. Cela peut écraser les données existantes. Êtes-vous sûr ?",
+    ),
     "inProgress": MessageLookupByLibrary.simpleMessage("En Cours"),
     "justNow": MessageLookupByLibrary.simpleMessage("À l\'instant"),
     "language": MessageLookupByLibrary.simpleMessage("Langue"),

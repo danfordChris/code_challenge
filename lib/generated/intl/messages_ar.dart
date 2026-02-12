@@ -56,6 +56,12 @@ class MessageLookup extends MessageLookupByLibrary {
       "أنشئ لوحتك الأولى للبدء",
     ),
     "darkMode": MessageLookupByLibrary.simpleMessage("الوضع الداكن"),
+    "dataExported": MessageLookupByLibrary.simpleMessage(
+      "تم تصدير البيانات بنجاح",
+    ),
+    "dataImportedSuccessfully": MessageLookupByLibrary.simpleMessage(
+      "تم استيراد البيانات بنجاح",
+    ),
     "dataManagement": MessageLookupByLibrary.simpleMessage("إدارة البيانات"),
     "databaseCleared": MessageLookupByLibrary.simpleMessage(
       "تم مسح قاعدة البيانات بنجاح",
@@ -79,6 +85,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "edit": MessageLookupByLibrary.simpleMessage("تعديل"),
     "editBoard": MessageLookupByLibrary.simpleMessage("تعديل اللوحة"),
     "editTask": MessageLookupByLibrary.simpleMessage("تعديل المهمة"),
+    "exportData": MessageLookupByLibrary.simpleMessage("تصدير البيانات"),
+    "exportDataMessage": MessageLookupByLibrary.simpleMessage(
+      "سيؤدي هذا إلى تصدير لوحاتك ومهامك إلى ملف JSON. هل أنت متأكد؟",
+    ),
     "failedToChangeLanguage": MessageLookupByLibrary.simpleMessage(
       "فشل تغيير اللغة",
     ),
@@ -89,6 +99,12 @@ class MessageLookup extends MessageLookupByLibrary {
       "فشل مسح قاعدة البيانات",
     ),
     "failedToDeleteData": m1,
+    "failedToExportData": MessageLookupByLibrary.simpleMessage(
+      "فشل تصدير البيانات",
+    ),
+    "failedToImportData": MessageLookupByLibrary.simpleMessage(
+      "فشل استيراد البيانات",
+    ),
     "failedToLoadData": m2,
     "failedToLoadSettings": MessageLookupByLibrary.simpleMessage(
       "فشل تحميل الإعدادات",
@@ -106,6 +122,10 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "high": MessageLookupByLibrary.simpleMessage("عالية"),
     "hourAgo": MessageLookupByLibrary.simpleMessage("س"),
+    "importData": MessageLookupByLibrary.simpleMessage("استيراد البيانات"),
+    "importDataMessage": MessageLookupByLibrary.simpleMessage(
+      "سيؤدي هذا إلى استيراد اللوحات والمهام من ملف JSON. قد يؤدي ذلك إلى استبدال البيانات الموجودة. هل أنت متأكد؟",
+    ),
     "inProgress": MessageLookupByLibrary.simpleMessage("قيد التنفيذ"),
     "justNow": MessageLookupByLibrary.simpleMessage("الآن"),
     "language": MessageLookupByLibrary.simpleMessage("اللغة"),
