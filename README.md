@@ -16,7 +16,7 @@ Make sure you have installed:
 
 Check installation:
 
-```dart
+```bash
 flutter --version
 ```
 
@@ -43,7 +43,7 @@ flutter pub get
 
 If localization files need regeneration:
 
-```
+```bash
 flutter gen-l10n
 ```
 
@@ -53,7 +53,7 @@ flutter run
 
 For a specific device:
 
-```
+```bash
 flutter devices
 flutter run -d <device-id>
 ```
@@ -63,7 +63,7 @@ flutter run -d <device-id>
 
 6️⃣ Run Tests
 
-```
+```bash
 flutter test
 ```
 ___
@@ -74,7 +74,7 @@ This project follows a feature-based clean modular architecture.
 
 Folder Structure Overview
 
-```
+```bash
 lib/
 ├── core/              # App-wide utilities, theme, constants
 ├── dao/               # Data access layer (SQLite operations)
@@ -107,7 +107,7 @@ The UI listens to controllers, and controllers interact with repositories, which
 
 Data Flow
 
-```
+```bash
 UI → Controller → Repository → DAO → Database
 ```
 This keeps responsibilities clean and testable.
