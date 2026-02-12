@@ -121,7 +121,7 @@ class BoardsController extends Notifier<BoardsControllerState> {
     } catch (e) {
       state = state.copyWith(isLoading: false, error: 'Failed to load task counts: $e');
     }
-  }
+  } 
 
   // Future<void> clearBoards() async {
   //   try {
