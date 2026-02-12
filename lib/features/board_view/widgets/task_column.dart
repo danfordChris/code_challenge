@@ -1,10 +1,10 @@
+import 'package:code_challenge/core/extensions/build_context_extensions.dart';
 import 'package:code_challenge/features/board_view/controller/task_controller.dart';
 import 'package:code_challenge/features/board_view/widgets/column_header.dart';
 import 'package:code_challenge/features/board_view/widgets/task_card.dart';
 import 'package:code_challenge/models/task_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:ipf_flutter_starter_pack/ipf_flutter_starter_pack.dart';
 
 class TaskColumn extends ConsumerStatefulWidget {
   final String title;

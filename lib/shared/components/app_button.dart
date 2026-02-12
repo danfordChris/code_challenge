@@ -1,6 +1,6 @@
+import 'package:code_challenge/core/extensions/build_context_extensions.dart';
 import 'package:code_challenge/core/theme/custom_colors.dart';
 import 'package:flutter/material.dart';
-import 'package:ipf_flutter_starter_pack/ipf_flutter_starter_pack.dart';
 
 enum AppButtonVariant { primary, secondary, tertiary, outline, surface, text, success, destructive, red, glass, glassIcon }
 
@@ -301,7 +301,7 @@ class _AppButtonState extends State<AppButton> {
     if (widget.title == null && widget.icon != null) {
       return widget.loading ? _loadingIndicator : Icon(widget.icon, color: _foregroundColor);
     }
-    return Text(widget.title!, style: widget.textStyle ?? context.titleMedium.medium.copyWith(color: _foregroundColor));
+    return Text(widget.title!, style: widget.textStyle ?? context.titleMedium.copyWith(color: _foregroundColor));
   }
 
   Widget get _loadingIndicator {

@@ -1,5 +1,5 @@
 import 'package:code_challenge/models/task_model.dart';
-import 'package:ipf_flutter_starter_pack/ipf_flutter_starter_pack.dart';
+import 'package:flutter_pack/flutter_pack.dart';
 
 /// * ---------- Auto Generated Code ---------- * ///
 
@@ -59,70 +59,15 @@ class TaskModelGen extends BaseDatabaseModel {
 	}
 
 	TaskModel merge(TaskModel model) {
-		_id = model.id ?? this._id;
-		_boardId = model.boardId ?? this._boardId;
-		_title = model.title ?? this._title;
-		_description = model.description ?? this._description;
-		_priority = model.priority ?? this._priority;
-		_status = model.status ?? this._status;
-		_createdAt = model.createdAt ?? this._createdAt;
-		_updatedAt = model.updatedAt ?? this._updatedAt;
 		return TaskModel(
-			id: model.id ?? _id,
-			boardId: model.boardId ?? _boardId,
-			title: model.title ?? _title,
-			description: model.description ?? _description,
-			priority: model.priority ?? _priority,
-			status: model.status ?? _status,
-			createdAt: model.createdAt ?? _createdAt,
-			updatedAt: model.updatedAt ?? _updatedAt
-		);
-	}
-
-	TaskModel mergeWith({String? id, String? boardId, String? title, String? description, int? priority, int? status, String? createdAt, String? updatedAt}) {
-		_id = id ?? this._id;
-		_boardId = boardId ?? this._boardId;
-		_title = title ?? this._title;
-		_description = description ?? this._description;
-		_priority = priority ?? this._priority;
-		_status = status ?? this._status;
-		_createdAt = createdAt ?? this._createdAt;
-		_updatedAt = updatedAt ?? this._updatedAt;
-		return TaskModel(
-			id: id ?? _id,
-			boardId: boardId ?? _boardId,
-			title: title ?? _title,
-			description: description ?? _description,
-			priority: priority ?? _priority,
-			status: status ?? _status,
-			createdAt: createdAt ?? _createdAt,
-			updatedAt: updatedAt ?? _updatedAt
-		);
-	}
-
-	TaskModel copy(TaskModel model) {
-		return TaskModel(
-			id: model.id ?? _id,
-			boardId: model.boardId ?? _boardId,
-			title: model.title ?? _title,
-			description: model.description ?? _description,
-			priority: model.priority ?? _priority,
-			status: model.status ?? _status,
-			createdAt: model.createdAt ?? _createdAt,
-			updatedAt: model.updatedAt ?? _updatedAt
-		);
-	}
-
-	TaskModel copyWith({String? id, String? boardId, String? title, String? description, int? priority, int? status, String? createdAt, String? updatedAt}) {
-		return TaskModel(
-			id: id ?? _id,
-			boardId: boardId ?? _boardId,
-			title: title ?? _title,
-			description: description ?? _description,
-			priority: priority ?? _priority,
-			status: status ?? _status,
-			createdAt: createdAt ?? _createdAt,
-			updatedAt: updatedAt ?? _updatedAt
+			id: model.id ?? this._id,
+			boardId: model.boardId ?? this._boardId,
+			title: model.title ?? this._title,
+			description: model.description ?? this._description,
+			priority: model.priority ?? this._priority,
+			status: model.status ?? this._status,
+			createdAt: model.createdAt ?? this._createdAt,
+			updatedAt: model.updatedAt ?? this._updatedAt
 		);
 	}
 

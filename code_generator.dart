@@ -1,4 +1,4 @@
-import 'package:ipf_flutter_starter_pack/ipf_flutter_starter_pack.dart';
+import 'package:flutter_pack/flutter_pack.dart';
 
 void main() {
   List<BaseModelGenerator> generator = [_Task(), _Boards()];

@@ -1,4 +1,4 @@
-import 'package:ipf_flutter_starter_pack/ipf_flutter_starter_pack.dart';
+import 'package:flutter_pack/flutter_pack.dart';
 import 'package:code_challenge/models/task_model.dart';
 import 'package:code_challenge/models/boards_model.dart';
 

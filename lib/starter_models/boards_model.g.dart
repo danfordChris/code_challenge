@@ -1,5 +1,5 @@
 import 'package:code_challenge/models/boards_model.dart';
-import 'package:ipf_flutter_starter_pack/ipf_flutter_starter_pack.dart';
+import 'package:flutter_pack/flutter_pack.dart';
 
 /// * ---------- Auto Generated Code ---------- * ///
 
@@ -53,58 +53,13 @@ class BoardsModelGen extends BaseDatabaseModel {
 	}
 
 	BoardsModel merge(BoardsModel model) {
-		_id = model.id ?? this._id;
-		_taskCount = model.taskCount ?? this._taskCount;
-		_boardName = model.boardName ?? this._boardName;
-		_description = model.description ?? this._description;
-		_createdAt = model.createdAt ?? this._createdAt;
-		_updatedAt = model.updatedAt ?? this._updatedAt;
 		return BoardsModel(
-			id: model.id ?? _id,
-			taskCount: model.taskCount ?? _taskCount,
-			boardName: model.boardName ?? _boardName,
-			description: model.description ?? _description,
-			createdAt: model.createdAt ?? _createdAt,
-			updatedAt: model.updatedAt ?? _updatedAt
-		);
-	}
-
-	BoardsModel mergeWith({String? id, int? taskCount, String? boardName, String? description, String? createdAt, String? updatedAt}) {
-		_id = id ?? this._id;
-		_taskCount = taskCount ?? this._taskCount;
-		_boardName = boardName ?? this._boardName;
-		_description = description ?? this._description;
-		_createdAt = createdAt ?? this._createdAt;
-		_updatedAt = updatedAt ?? this._updatedAt;
-		return BoardsModel(
-			id: id ?? _id,
-			taskCount: taskCount ?? _taskCount,
-			boardName: boardName ?? _boardName,
-			description: description ?? _description,
-			createdAt: createdAt ?? _createdAt,
-			updatedAt: updatedAt ?? _updatedAt
-		);
-	}
-
-	BoardsModel copy(BoardsModel model) {
-		return BoardsModel(
-			id: model.id ?? _id,
-			taskCount: model.taskCount ?? _taskCount,
-			boardName: model.boardName ?? _boardName,
-			description: model.description ?? _description,
-			createdAt: model.createdAt ?? _createdAt,
-			updatedAt: model.updatedAt ?? _updatedAt
-		);
-	}
-
-	BoardsModel copyWith({String? id, int? taskCount, String? boardName, String? description, String? createdAt, String? updatedAt}) {
-		return BoardsModel(
-			id: id ?? _id,
-			taskCount: taskCount ?? _taskCount,
-			boardName: boardName ?? _boardName,
-			description: description ?? _description,
-			createdAt: createdAt ?? _createdAt,
-			updatedAt: updatedAt ?? _updatedAt
+			id: model.id ?? this._id,
+			taskCount: model.taskCount ?? this._taskCount,
+			boardName: model.boardName ?? this._boardName,
+			description: model.description ?? this._description,
+			createdAt: model.createdAt ?? this._createdAt,
+			updatedAt: model.updatedAt ?? this._updatedAt
 		);
 	}
 
