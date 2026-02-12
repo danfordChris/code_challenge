@@ -1,5 +1,6 @@
 import 'package:code_challenge/features/board_view/controller/task_controller.dart';
 import 'package:code_challenge/models/task_model.dart';
+import 'package:code_challenge/services/localization_service.dart';
 import 'package:code_challenge/shared/components/app_button.dart';
 import 'package:code_challenge/shared/components/app_text_field.dart';
 import 'package:flutter/material.dart';
@@ -40,7 +41,7 @@ class _TaskSheetState extends ConsumerState<TaskSheet> {
 
   Future<void> _saveTask() async {
     if (_titleController.text.trim().isEmpty) {
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Title is required')));
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(Strings.instance.titleRequired)));
       return;
     }
 
@@ -84,16 +85,16 @@ class _TaskSheetState extends ConsumerState<TaskSheet> {
               children: [
                 const SizedBox(height: 24),
                 AppTextField(
-                  label: isEditing ? 'Edit Task' : 'Create Task',
+                  label: isEditing ? Strings.instance.editTask : Strings.instance.addTask,
                   controller: _titleController,
-                  hint: 'Task title *',
+                  hint: Strings.instance.taskTittle,
                   // enabled: !_isLoading,
                 ),
                 const SizedBox(height: 16),
                 AppTextField(
-                  label: 'Description',
+                  label: Strings.instance.description,
                   controller: _descriptionController,
-                  hint: 'Add description (optional)',
+                  hint: Strings.instance.descriptionHint,
                   // maxLines: 3,
                   // enabled: !_isLoading,
                 ),
@@ -102,8 +103,8 @@ class _TaskSheetState extends ConsumerState<TaskSheet> {
                   children: [
                     Expanded(
                       child: AppTextField.dropdown(
-                        hint: 'Priority',
-                        label: 'Task Priority',
+                        hint: Strings.instance.priority,
+                        label: Strings.instance.taskPriority,
                         initialValue: _selectedPriority,
                         itemLabel: (priority) => priority.title,
                         items: TaskPriority.values,
@@ -119,8 +120,8 @@ class _TaskSheetState extends ConsumerState<TaskSheet> {
                     const SizedBox(width: 16),
                     Expanded(
                       child: AppTextField.dropdown(
-                        hint: 'Status',
-                        label: 'Task Status',
+                        hint: Strings.instance.status,
+                        label: Strings.instance.taskStatus,
                         initialValue: _selectedStatus,
                         itemLabel: (status) => status.title,
                         items: TaskStatus.values,
@@ -141,12 +142,12 @@ class _TaskSheetState extends ConsumerState<TaskSheet> {
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      AppButton.text(onPressed: _isLoading ? null : () => Navigator.pop(context), expands: false, title: 'Cancel'),
+                      AppButton.text(onPressed: _isLoading ? null : () => Navigator.pop(context), expands: false, title: Strings.instance.cancel),
                       const SizedBox(width: 12),
                       AppButton.primary(
                         onPressed: _isLoading ? null : _saveTask,
                         expands: false,
-                        title: 'Save',
+                        title: Strings.instance.save,
                         // isLoading: _isLoading
                       ),
                     ],

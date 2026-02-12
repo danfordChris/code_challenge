@@ -1,4 +1,5 @@
 import 'package:code_challenge/core/extensions/build_context_extensions.dart';
+import 'package:code_challenge/services/localization_service.dart';
 import 'package:code_challenge/shared/controllers/settings_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -23,16 +24,13 @@ class _ThemeOptionsState extends ConsumerState<ThemeOptions> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Padding(
+        Padding(
           padding: EdgeInsets.all(16),
-          child: Text('Theme Mode', style: TextStyle(fontWeight: FontWeight.w600)),
+          child: Text(Strings.instance.themeMode, style: TextStyle(fontWeight: FontWeight.w600)),
         ),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),
-          child: Text(
-            'Choose your preferred theme appearance',
-            style: context.textTheme.bodySmall?.copyWith(color: context.colorScheme.onSurfaceVariant),
-          ),
+          child: Text(Strings.instance.themeModeMessage, style: context.textTheme.bodySmall?.copyWith(color: context.colorScheme.onSurfaceVariant)),
         ),
         const SizedBox(height: 16),
         if (isLoading)
@@ -47,7 +45,7 @@ class _ThemeOptionsState extends ConsumerState<ThemeOptions> {
                   theme: AppTheme.light,
                   currentTheme: currentTheme,
                   icon: HugeIcons.strokeRoundedSun01,
-                  label: 'Light',
+                  label: Strings.instance.lightMode,
                   onTap: () => ref.read(settingsProvider.notifier).setLightMode(),
                 ),
               ),
@@ -57,7 +55,7 @@ class _ThemeOptionsState extends ConsumerState<ThemeOptions> {
                   theme: AppTheme.dark,
                   currentTheme: currentTheme,
                   icon: HugeIcons.strokeRoundedMoon01,
-                  label: 'Dark',
+                  label: Strings.instance.darkMode,
                   onTap: () => ref.read(settingsProvider.notifier).setDarkMode(),
                 ),
               ),
@@ -67,7 +65,7 @@ class _ThemeOptionsState extends ConsumerState<ThemeOptions> {
                   theme: AppTheme.system,
                   currentTheme: currentTheme,
                   icon: HugeIcons.strokeRoundedSettings01,
-                  label: 'System',
+                  label: Strings.instance.systemMode,
                   onTap: () => ref.read(settingsProvider.notifier).setSystemMode(),
                 ),
               ),

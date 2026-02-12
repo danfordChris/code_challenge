@@ -21,5 +21,13 @@ class _Task extends BaseModelGenerator {
 
 class _Boards extends BaseModelGenerator {
   _Boards()
-    : super.database('board', {'id': String, 'taskCount': int, 'boardName': String, 'description': String, 'createdAt': String, 'updatedAt': String});
+    : super.database('board', {
+        'id': String,
+        'taskCount': int,
+        'completedTaskCount': int,
+        'boardName': String,
+        'description': String,
+        'createdAt': String,
+        'updatedAt': String,
+      });
 }

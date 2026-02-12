@@ -1,5 +1,6 @@
 import 'package:code_challenge/core/extensions/build_context_extensions.dart';
 import 'package:code_challenge/models/task_model.dart';
+import 'package:code_challenge/services/localization_service.dart';
 import 'package:flutter/material.dart';
 
 class PriorityBadge extends StatelessWidget {
@@ -24,11 +25,11 @@ class PriorityBadge extends StatelessWidget {
   _PriorityConfig _getPriorityConfig() {
     switch (priority) {
       case TaskPriority.high:
-        return _PriorityConfig(color: Colors.red, label: 'High');
+        return _PriorityConfig(color: Colors.red, label: Strings.instance.high);
       case TaskPriority.medium:
-        return _PriorityConfig(color: Colors.orange, label: 'Medium');
+        return _PriorityConfig(color: Colors.orange, label: Strings.instance.medium);
       case TaskPriority.low:
-        return _PriorityConfig(color: Colors.green, label: 'Low');
+        return _PriorityConfig(color: Colors.green, label: Strings.instance.low);
     }
   }
 }

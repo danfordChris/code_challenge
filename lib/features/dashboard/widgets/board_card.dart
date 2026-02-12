@@ -1,5 +1,6 @@
 import 'package:code_challenge/core/extensions/build_context_extensions.dart';
 import 'package:code_challenge/features/board_view/screens/task_board_screen.dart';
+import 'package:code_challenge/services/localization_service.dart';
 import 'package:flutter/material.dart';
 import 'package:hugeicons/hugeicons.dart';
 
@@ -8,6 +9,7 @@ class BoardCard extends StatelessWidget {
   final String boardName;
   final String discription;
   final int taskCount;
+  final int completedTaskCount;
   final DateTime lastUpdated;
   final VoidCallback onEdit;
   final VoidCallback onDelete;
@@ -17,6 +19,7 @@ class BoardCard extends StatelessWidget {
     required this.boardId,
     required this.boardName,
     required this.taskCount,
+    required this.completedTaskCount,
     required this.discription,
     required this.lastUpdated,
     required this.onEdit,
@@ -25,10 +28,10 @@ class BoardCard extends StatelessWidget {
 
   String _getTimeAgo(DateTime date) {
     final difference = DateTime.now().difference(date);
-    if (difference.inDays > 0) return '${difference.inDays}d ago';
-    if (difference.inHours > 0) return '${difference.inHours}h ago';
-    if (difference.inMinutes > 0) return '${difference.inMinutes}m ago';
-    return 'Just now';
+    if (difference.inDays > 0) return '${difference.inDays}${Strings.instance.dayAgo}';
+    if (difference.inHours > 0) return '${difference.inHours}${Strings.instance.hourAgo}';
+    if (difference.inMinutes > 0) return '${difference.inMinutes}${Strings.instance.medium}';
+    return Strings.instance.justNow;
   }
 
   @override
@@ -88,11 +91,11 @@ class BoardCard extends StatelessWidget {
                     itemBuilder: (context) => [
                       PopupMenuItem(
                         value: BoardMenuOption.edit.name,
-                        child: Text('Edit', style: TextStyle(color: context.colorScheme.onSurface)),
+                        child: Text(Strings.instance.edit, style: TextStyle(color: context.colorScheme.onSurface)),
                       ),
                       PopupMenuItem(
                         value: BoardMenuOption.delete.name,
-                        child: Text('Delete', style: TextStyle(color: context.colorScheme.onSurface)),
+                        child: Text(Strings.instance.delete, style: TextStyle(color: context.colorScheme.onSurface)),
                       ),
                     ],
                     icon: HugeIcon(icon: HugeIcons.strokeRoundedMoreVerticalCircle01, color: context.colorScheme.onSurfaceVariant, size: 20),
@@ -113,12 +116,12 @@ class BoardCard extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          '$taskCount Tasks',
+                          '$taskCount ${Strings.instance.tasks}',
                           style: context.textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.w500, color: context.colorScheme.onSurface),
                         ),
                         const SizedBox(height: 4),
                         LinearProgressIndicator(
-                          value: 0.6, // You can calculate this from actual data
+                          value: taskCount > 0 ? completedTaskCount / taskCount : 0,
                           backgroundColor: context.colorScheme.outline.withOpacity(0.1),
                           color: context.colorScheme.primary,
                           borderRadius: BorderRadius.circular(10),

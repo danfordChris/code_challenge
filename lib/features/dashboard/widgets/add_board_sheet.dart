@@ -1,5 +1,6 @@
 import 'package:code_challenge/features/dashboard/controller/boards_controller.dart';
 import 'package:code_challenge/models/boards_model.dart';
+import 'package:code_challenge/services/localization_service.dart';
 import 'package:code_challenge/shared/components/app_button.dart';
 import 'package:code_challenge/shared/components/app_text_field.dart';
 import 'package:flutter/material.dart';
@@ -34,7 +35,7 @@ class _AddBoardSheetState extends ConsumerState<AddBoardSheet> {
 
   void _saveBoard() {
     if (_boardNameController.text.isEmpty) {
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Board name is required')));
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(Strings.instance.boardNameIsRequired)));
       return;
     }
 
@@ -64,9 +65,13 @@ class _AddBoardSheetState extends ConsumerState<AddBoardSheet> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const SizedBox(height: 24),
-                AppTextField(label: widget.board == null ? 'Create Board' : 'Edit Board', controller: _boardNameController, hint: 'Board Name *'),
+                AppTextField(
+                  label: widget.board == null ? Strings.instance.createBoard : Strings.instance.editBoard,
+                  controller: _boardNameController,
+                  hint: Strings.instance.boardName,
+                ),
                 const SizedBox(height: 16),
-                AppTextField(label: 'Description', controller: _descriptionController, hint: 'Description'),
+                AppTextField(label: Strings.instance.description, controller: _descriptionController, hint: Strings.instance.description),
                 const SizedBox(height: 16),
 
                 const SizedBox(height: 32),
@@ -75,9 +80,9 @@ class _AddBoardSheetState extends ConsumerState<AddBoardSheet> {
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      AppButton.text(onPressed: () => Navigator.pop(context), expands: false, title: "Cancel"),
+                      AppButton.text(onPressed: () => Navigator.pop(context), expands: false, title: Strings.instance.cancel),
                       const SizedBox(width: 12),
-                      AppButton.primary(onPressed: _saveBoard, expands: false, title: "Save"),
+                      AppButton.primary(onPressed: _saveBoard, expands: false, title: Strings.instance.save),
                     ],
                   ),
                 ),

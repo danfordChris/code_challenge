@@ -1,4 +1,5 @@
 import 'package:code_challenge/core/extensions/build_context_extensions.dart';
+import 'package:code_challenge/services/localization_service.dart';
 import 'package:code_challenge/shared/controllers/settings_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -59,7 +60,7 @@ class _LanguageOptionsState extends ConsumerState<LanguageOptions> {
                   if (mounted) {
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(
-                        content: Text('Language changed to ${lang.label}'),
+                        content: Text(Strings.instance.changeLanguageMessage(lang.label)),
                         behavior: SnackBarBehavior.floating,
                         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
                         margin: const EdgeInsets.all(16),

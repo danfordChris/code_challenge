@@ -4,6 +4,7 @@ import 'package:code_challenge/features/user_profile/widgets/profile_header.dart
 import 'package:code_challenge/features/user_profile/widgets/section_header.dart';
 import 'package:code_challenge/features/user_profile/widgets/settings_card.dart';
 import 'package:code_challenge/features/user_profile/widgets/theme_options.dart';
+import 'package:code_challenge/services/localization_service.dart';
 import 'package:code_challenge/shared/controllers/settings_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -30,7 +31,11 @@ class _UserProfileScreenState extends ConsumerState<UserProfileScreen> {
             content: Text(error),
             behavior: SnackBarBehavior.floating,
             backgroundColor: Colors.red,
-            action: SnackBarAction(label: 'Dismiss', textColor: Colors.white, onPressed: () => ref.read(settingsProvider.notifier).clearError()),
+            action: SnackBarAction(
+              label: Strings.instance.dismiss,
+              textColor: Colors.white,
+              onPressed: () => ref.read(settingsProvider.notifier).clearError(),
+            ),
           ),
         );
       }
@@ -38,7 +43,7 @@ class _UserProfileScreenState extends ConsumerState<UserProfileScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Settings'),
+        title: Text(Strings.instance.settings),
         elevation: 0,
         actions: [
           IconButton(
@@ -47,11 +52,11 @@ class _UserProfileScreenState extends ConsumerState<UserProfileScreen> {
               final confirm = await showDialog<bool>(
                 context: context,
                 builder: (context) => AlertDialog(
-                  title: const Text('Reset Settings'),
-                  content: const Text('Are you sure you want to reset all settings to default?'),
+                  title: Text(Strings.instance.resetSettings),
+                  content: Text(Strings.instance.resetSettingsMessage),
                   actions: [
-                    TextButton(onPressed: () => Navigator.pop(context, false), child: const Text('Cancel')),
-                    TextButton(onPressed: () => Navigator.pop(context, true), child: const Text('Reset')),
+                    TextButton(onPressed: () => Navigator.pop(context, false), child: Text(Strings.instance.cancel)),
+                    TextButton(onPressed: () => Navigator.pop(context, true), child: Text(Strings.instance.reset)),
                   ],
                 ),
               );
@@ -61,7 +66,7 @@ class _UserProfileScreenState extends ConsumerState<UserProfileScreen> {
                 if (mounted) {
                   ScaffoldMessenger.of(
                     context,
-                  ).showSnackBar(const SnackBar(content: Text('Settings reset to default'), behavior: SnackBarBehavior.floating));
+                  ).showSnackBar(SnackBar(content: Text(Strings.instance.settingsResetToDefault), behavior: SnackBarBehavior.floating));
                 }
               }
             },
@@ -70,28 +75,28 @@ class _UserProfileScreenState extends ConsumerState<UserProfileScreen> {
       ),
       body: ListView(
         padding: const EdgeInsets.all(16),
-        children: const [
+        children: [
           // Profile Header
-          ProfileHeader(initials: 'JD', name: 'John Doe', email: 'john.doe@example.com'),
+          const ProfileHeader(initials: 'JD', name: 'John Doe', email: 'john.doe@example.com'),
 
-          SizedBox(height: 24),
+          const SizedBox(height: 24),
 
           // Theme Section
-          SectionHeader(title: 'Appearance', icon: HugeIcons.strokeRoundedPaintBoard),
-          SizedBox(height: 16),
-          SettingsCard(children: [ThemeOptions()]),
+          SectionHeader(title: Strings.instance.appearance, icon: HugeIcons.strokeRoundedPaintBoard),
+          const SizedBox(height: 16),
+          const SettingsCard(children: [ThemeOptions()]),
 
-          SizedBox(height: 24),
+          const SizedBox(height: 24),
 
           // Language Section
-          SectionHeader(title: 'Language', icon: HugeIcons.strokeRoundedTranslate),
-          SizedBox(height: 16),
-          SettingsCard(children: [LanguageOptions()]),
+          SectionHeader(title: Strings.instance.language, icon: HugeIcons.strokeRoundedTranslate),
+          const SizedBox(height: 16),
+          const SettingsCard(children: [LanguageOptions()]),
 
-          SizedBox(height: 24),
+          const SizedBox(height: 24),
 
           // App Info
-          _AppInfo(),
+          const _AppInfo(),
         ],
       ),
     );
@@ -106,7 +111,7 @@ class _AppInfo extends StatelessWidget {
     return Center(
       child: Column(
         children: [
-          Text('Version 1.0.0', style: context.textTheme.bodySmall?.copyWith(color: context.colorScheme.onSurfaceVariant)),
+          Text(Strings.instance.version("1.0.0"), style: context.textTheme.bodySmall?.copyWith(color: context.colorScheme.onSurfaceVariant)),
           const SizedBox(height: 4),
           Text('© 2026 code challenge', style: context.textTheme.bodySmall?.copyWith(color: context.colorScheme.onSurfaceVariant)),
         ],

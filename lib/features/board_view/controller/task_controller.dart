@@ -1,5 +1,6 @@
 import 'package:code_challenge/models/task_model.dart';
 import 'package:code_challenge/repositories/task_repository.dart';
+import 'package:code_challenge/services/localization_service.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class TaskState {
@@ -31,7 +32,7 @@ class TaskController extends Notifier<TaskState> {
       final tasks = await TaskRepository.instance.taskForBoard(boardId);
       state = state.copyWith(tasks: tasks, isLoading: false);
     } catch (e) {
-      state = state.copyWith(isLoading: false, error: 'Failed to load tasks: $e');
+      state = state.copyWith(isLoading: false, error: '${Strings.instance.failedToLoadData(Strings.instance.task)}: $e');
     }
   }
 
@@ -42,7 +43,7 @@ class TaskController extends Notifier<TaskState> {
       state = state.copyWith(isLoading: false);
       loadTasks(task);
     } catch (e) {
-      state = state.copyWith(isLoading: false, error: 'Failed to save task: $e');
+      state = state.copyWith(isLoading: false, error: '${Strings.instance.failedToSaveData(Strings.instance.task)}: $e');
     }
   }
 
@@ -53,7 +54,7 @@ class TaskController extends Notifier<TaskState> {
       state = state.copyWith(isLoading: false);
       loadTasks(task);
     } catch (e) {
-      state = state.copyWith(isLoading: false, error: 'Failed to delete task: $e');
+      state = state.copyWith(isLoading: false, error: '${Strings.instance.failedToDeleteData(Strings.instance.task)}: $e');
     }
   }
 
@@ -64,7 +65,7 @@ class TaskController extends Notifier<TaskState> {
       final tasks = await TaskRepository.instance.taskForBoard(task.boardId!);
       state = state.copyWith(tasks: tasks, isLoading: false);
     } catch (e) {
-      state = state.copyWith(isLoading: false, error: 'Failed to load tasks: $e');
+      state = state.copyWith(isLoading: false, error: '${Strings.instance.failedToLoadData(Strings.instance.task)}: $e');
     }
   }
 
@@ -75,7 +76,7 @@ class TaskController extends Notifier<TaskState> {
       state = state.copyWith(isLoading: false);
       loadTasks(task);
     } catch (e) {
-      state = state.copyWith(isLoading: false, error: 'Failed to update task: $e');
+      state = state.copyWith(isLoading: false, error: '${Strings.instance.failedToUpdateData(Strings.instance.task)}: $e');
     }
   }
 }

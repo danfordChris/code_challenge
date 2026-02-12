@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 class StartsCards extends StatelessWidget {
   final String title;
-  final String count;
+  final int count;
   final Color? cardColor;
   final Color? borderColor;
   final Color? textColor;
@@ -21,7 +21,7 @@ class StartsCards extends StatelessWidget {
             title,
             style: context.textTheme.titleMedium?.copyWith(color: textColor, fontWeight: FontWeight.w600),
           ),
-          Text(count, style: context.textTheme.titleMedium),
+          Text("$count", style: context.textTheme.titleMedium),
         ],
       ),
     );

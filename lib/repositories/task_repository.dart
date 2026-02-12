@@ -1,5 +1,5 @@
-import 'package:code_challenge/repositories/base_repository.dart';
 import 'package:code_challenge/models/task_model.dart';
+import 'package:code_challenge/repositories/base_repository.dart';
 
 /// * ---------- Auto Generated Code ---------- * ///
 
@@ -11,5 +11,20 @@ class TaskRepository extends BaseRepository<TaskModel> {
   Future<List<TaskModel>> taskForBoard(String boardId) async {
     List<TaskModel> allTasks = await all;
     return allTasks.where((task) => task.boardId == boardId).toList();
+  }
+
+  Future<List<TaskModel>> taskCompletedForBoard(String boardId) async {
+    List<TaskModel> allTasks = await all;
+    return allTasks.where((task) => task.boardId == boardId && task.status == TaskStatus.done.value).toList();
+  }
+
+  Future<List<TaskModel>> get activeTask async {
+    List<TaskModel> allTasks = await all;
+    return allTasks.where((task) => task.status != TaskStatus.done.value).toList();
+  }
+
+  Future<List<TaskModel>> get completedTask async {
+    List<TaskModel> allTasks = await all;
+    return allTasks.where((task) => task.status == TaskStatus.done.value).toList();
   }
 }

@@ -44,10 +44,7 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
       body: Center(
         child: FadeTransition(
           opacity: _fade,
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [Hero(tag: 'app_logo', child: Image.asset(Images.appLogo, width: 180, height: 180))],
-          ),
+          child: Column(mainAxisSize: MainAxisSize.min, children: [Image.asset(Images.appLogo, width: 180, height: 180)]),
         ),
       ),
     );

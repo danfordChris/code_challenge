@@ -4,6 +4,7 @@ import 'package:code_challenge/features/board_view/widgets/statistics_bar.dart';
 import 'package:code_challenge/features/board_view/widgets/task_column.dart';
 import 'package:code_challenge/features/board_view/widgets/task_sheet.dart';
 import 'package:code_challenge/models/task_model.dart';
+import 'package:code_challenge/services/localization_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hugeicons/hugeicons.dart';
@@ -68,17 +69,29 @@ class _TaskBoardScreenState extends ConsumerState<TaskBoardScreen> {
               child: ListView(
                 scrollDirection: Axis.horizontal,
                 children: [
-                  TaskColumn(title: 'To Do', status: TaskStatus.todo, color: Colors.blue, width: context.width * 0.6, boardId: widget.boardId),
+                  TaskColumn(
+                    title: Strings.instance.toDo,
+                    status: TaskStatus.todo,
+                    color: Colors.blue,
+                    width: context.width * 0.6,
+                    boardId: widget.boardId,
+                  ),
                   SizedBox(width: 16),
                   TaskColumn(
-                    title: 'In Progress',
+                    title: Strings.instance.inProgress,
                     status: TaskStatus.inProgress,
                     color: Colors.orange,
                     width: context.width * 0.6,
                     boardId: widget.boardId,
                   ),
                   SizedBox(width: 16),
-                  TaskColumn(title: 'Done', status: TaskStatus.done, color: Colors.green, width: context.width * 0.6, boardId: widget.boardId),
+                  TaskColumn(
+                    title: Strings.instance.done,
+                    status: TaskStatus.done,
+                    color: Colors.green,
+                    width: context.width * 0.6,
+                    boardId: widget.boardId,
+                  ),
                   SizedBox(width: 16),
                 ],
               ),

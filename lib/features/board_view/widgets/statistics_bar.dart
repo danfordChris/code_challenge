@@ -1,6 +1,7 @@
 import 'package:code_challenge/core/extensions/build_context_extensions.dart';
 import 'package:code_challenge/features/board_view/controller/task_controller.dart';
 import 'package:code_challenge/models/task_model.dart';
+import 'package:code_challenge/services/localization_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -23,9 +24,9 @@ class TaskStatisticsBar extends ConsumerWidget {
       ),
       child: Row(
         children: [
-          _StatItem(icon: Icons.task_outlined, value: totalTasks.toString(), label: 'Total Tasks', color: context.colorScheme.primary),
+          _StatItem(icon: Icons.task_outlined, value: totalTasks.toString(), label: Strings.instance.totalTasks, color: context.colorScheme.primary),
           const SizedBox(width: 24),
-          _StatItem(icon: Icons.check_circle_outline, value: completedTasks.toString(), label: 'Completed', color: Colors.green),
+          _StatItem(icon: Icons.check_circle_outline, value: completedTasks.toString(), label: Strings.instance.completed, color: Colors.green),
           const SizedBox(width: 24),
           Expanded(child: _ProgressIndicator(progress: progress)),
         ],
@@ -74,7 +75,7 @@ class _ProgressIndicator extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text('Progress', style: context.textTheme.bodySmall?.copyWith(color: context.colorScheme.onSurfaceVariant)),
+            Text(Strings.instance.progress, style: context.textTheme.bodySmall?.copyWith(color: context.colorScheme.onSurfaceVariant)),
             Text(
               '${(progress * 100).round()}%',
               style: context.textTheme.bodySmall?.copyWith(fontWeight: FontWeight.w600, color: context.colorScheme.primary),

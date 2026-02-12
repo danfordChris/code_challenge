@@ -11,5 +11,11 @@ class Strings {
     return [S.delegate, GlobalMaterialLocalizations.delegate, GlobalWidgetsLocalizations.delegate, GlobalCupertinoLocalizations.delegate];
   }
 
-  static List<Locale> get supportedLocales => [const Locale('en', 'US'), const Locale('sw', 'TZ')];
+  static List<Locale> get supportedLocales => [
+    const Locale('en', 'US'),
+    const Locale('sw', 'TZ'),
+    const Locale('fr', 'FR'),
+    const Locale('es', 'ES'),
+    const Locale('ar', 'SA'),
+  ];
 }

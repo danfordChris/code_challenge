@@ -4,6 +4,7 @@ import 'package:code_challenge/features/board_view/controller/task_controller.da
 import 'package:code_challenge/features/board_view/widgets/priority_badge.dart';
 import 'package:code_challenge/features/board_view/widgets/task_sheet.dart';
 import 'package:code_challenge/models/task_model.dart';
+import 'package:code_challenge/services/localization_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -38,16 +39,16 @@ class TaskCard extends ConsumerWidget {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Delete Task'),
-        content: const Text('Are you sure you want to delete this task?'),
+        title: Text(Strings.instance.deleteTask),
+        content: Text(Strings.instance.deleteTaskQuestion),
         actions: [
-          TextButton(onPressed: () => Navigator.pop(context), child: const Text('Cancel')),
+          TextButton(onPressed: () => Navigator.pop(context), child: Text(Strings.instance.cancel)),
           TextButton(
             onPressed: () {
               ref.read(tasksProvider.notifier).deleteTask(TaskModel(id: task.id));
               Navigator.pop(context);
             },
-            child: const Text('Delete'),
+            child: Text(Strings.instance.delete),
           ),
         ],
       ),

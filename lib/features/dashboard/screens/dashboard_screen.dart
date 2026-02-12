@@ -6,6 +6,7 @@ import 'package:code_challenge/features/dashboard/widgets/board_card.dart';
 import 'package:code_challenge/features/dashboard/widgets/stats_card.dart';
 import 'package:code_challenge/features/user_profile/screen/user_profile.dart';
 import 'package:code_challenge/models/boards_model.dart';
+import 'package:code_challenge/services/localization_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hugeicons/hugeicons.dart';
@@ -34,19 +35,19 @@ class _DashboardScreenState extends ConsumerState<DashboardScreen> {
         surfaceTintColor: context.colorScheme.surface,
         centerTitle: false,
         automaticallyImplyLeading: false,
-        title: Text('Task Boards', style: context.textTheme.headlineSmall),
+        title: Text(Strings.instance.taskBoards, style: context.textTheme.headlineSmall),
         actions: [
           IconButton(
             onPressed: () {},
             icon: HugeIcon(icon: HugeIcons.strokeRoundedSearch01, color: context.colorScheme.onSurface),
           ),
           IconButton(
-            onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const UserProfileScreen())),
-            icon: HugeIcon(icon: HugeIcons.strokeRoundedSetting07, color: context.colorScheme.onSurface),
+            onPressed: () {},
+            icon: HugeIcon(icon: HugeIcons.strokeRoundedPreferenceHorizontal, color: context.colorScheme.onSurface),
           ),
           IconButton(
-            onPressed: () {},
-            icon: HugeIcon(icon: HugeIcons.strokeRoundedUserCircle, color: context.colorScheme.onSurface, size: 40),
+            onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const UserProfileScreen())),
+            icon: HugeIcon(icon: HugeIcons.strokeRoundedSetting07, color: context.colorScheme.onSurface),
           ),
         ],
       ),
@@ -66,8 +67,8 @@ class _DashboardScreenState extends ConsumerState<DashboardScreen> {
               children: [
                 Expanded(
                   child: StartsCards(
-                    title: 'ACTIVE',
-                    count: '24',
+                    title: Strings.instance.active,
+                    count: boardsState.activeTasksCount ?? 0,
                     textColor: context.colorScheme.primaryContainer,
                     cardColor: context.colorScheme.primaryContainer.withAlpha(20),
                     borderColor: context.colorScheme.primary.withAlpha(20),
@@ -75,8 +76,8 @@ class _DashboardScreenState extends ConsumerState<DashboardScreen> {
                 ),
                 Expanded(
                   child: StartsCards(
-                    title: 'TOTAL',
-                    count: '12',
+                    title: Strings.instance.total,
+                    count: boardsState.pendingTasksCount ?? 0,
                     textColor: context.colorScheme.outline,
                     cardColor: context.colorScheme.outline.withAlpha(20),
                     borderColor: context.colorScheme.outlineVariant.withAlpha(20),
@@ -84,8 +85,8 @@ class _DashboardScreenState extends ConsumerState<DashboardScreen> {
                 ),
                 Expanded(
                   child: StartsCards(
-                    title: 'DONE',
-                    count: '8',
+                    title: Strings.instance.done,
+                    count: boardsState.completedTasksCount ?? 0,
                     textColor: context.customColors.onSuccessContainer,
                     cardColor: context.customColors.onSuccessContainer.withAlpha(20),
                     borderColor: context.customColors.successContainer,
@@ -97,7 +98,7 @@ class _DashboardScreenState extends ConsumerState<DashboardScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('Your Boards', style: context.textTheme.titleMedium),
+                  Text(Strings.instance.yourBoards, style: context.textTheme.titleMedium),
                   const SizedBox(height: 12),
                   Expanded(
                     child: boardsState.boards.isEmpty
@@ -107,10 +108,10 @@ class _DashboardScreenState extends ConsumerState<DashboardScreen> {
                               children: [
                                 HugeIcon(icon: HugeIcons.strokeRoundedDashboardSquare02, size: 64, color: context.colorScheme.outline),
                                 const SizedBox(height: 12),
-                                Text('No boards yet', style: context.textTheme.titleMedium),
+                                Text(Strings.instance.noBoardsYet, style: context.textTheme.titleMedium),
                                 const SizedBox(height: 4),
                                 Text(
-                                  'Create your first board to get started',
+                                  Strings.instance.createBoardMessage,
                                   style: context.textTheme.bodyMedium?.copyWith(color: context.colorScheme.outline),
                                   textAlign: TextAlign.center,
                                 ),
@@ -123,7 +124,8 @@ class _DashboardScreenState extends ConsumerState<DashboardScreen> {
                               children: boardsState.boards
                                   .map(
                                     (board) => BoardCard(
-                                      taskCount: 5,
+                                      taskCount: board.taskCount ?? 0,
+                                      completedTaskCount: board.completedTaskCount ?? 0,
                                       lastUpdated: DateTime.parse(board.updatedAt ?? ''),
                                       boardId: board.id ?? "",
                                       boardName: board.boardName ?? '',

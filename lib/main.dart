@@ -21,7 +21,7 @@ class MyApp extends ConsumerWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'code_challenge',
-      locale: provider.language?.locale,
+      locale: provider.language.locale,
       localizationsDelegates: [
         S.delegate,
         GlobalMaterialLocalizations.delegate,
