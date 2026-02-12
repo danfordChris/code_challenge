@@ -152,7 +152,7 @@ ___
 •	For larger systems, Riverpod/Bloc could provide more predictable state handling.
 4.	Testing Coverage
 •	Minimal test coverage included.
-•	Controllers and repositories could be further unit-tested.
+•	Controllers and repositories could be furthered unit-tested.
 5.	Single Locale
 •	Currently English-only.
 
