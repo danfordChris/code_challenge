@@ -35,8 +35,6 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
 
-  flutter_pack:
-    path: /Users/danfordchris/projects/starterpacks/myProjects/flutter_pack
   provider: ^6.1.5+1
   flex_color_scheme: ^8.3.0
   intl: ^0.20.2
@@ -51,6 +49,7 @@ dependencies:
   riverpod_lint: ^2.6.5
   share_plus: ^12.0.1
   file_picker: ^10.3.10
+  flutter_pack: ^1.1.0
 #  flutter_pack: ^1.0.9+1
 
 
